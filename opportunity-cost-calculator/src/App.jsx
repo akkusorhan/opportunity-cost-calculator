@@ -5,8 +5,11 @@ import Hero from "./components/Hero"
 import axios from "axios"
 
 function App() {
+
+
+
   //_______
-  // Setting State
+  // Setting State - Stocks List
   const [stocks, setStocks] = React.useState("");
   const [list, setList] = React.useState([])
 
@@ -22,8 +25,12 @@ function App() {
 
     console.log(list.map(item => item.value))
   }
+
+
+
+
   //___________
-  // Setting State
+  // Setting State - Time Horizon
   const [timeHorizon, setTimeHorizon] = React.useState("")
 
   // Helper Functions
@@ -34,8 +41,36 @@ function App() {
   }
 
 
+
+
+  //___________
+  // Setting State - Amount Saved
+  const [amountSaved, setAmountSaved] = React.useState("");
+
+  // Helper Functions
+  function handleAmountSaved(event) {
+    return setAmountSaved(event.target.value)
+  }
+
+
+
+
+  //___________
+  // Setting State - Submit Button
+  let isSubmit = false
+
+  const listOfStocks = list.map(item => item.value + " ")
+
+  // Helper Functions
+  function handleSubmit() {
+    console.log(`stocks chosen: ${listOfStocks} | time horizon: ${timeHorizon} | amount saved: $${amountSaved}`)
+  }
+
   return (
     <>
+
+
+
     ___
     <br></br>
       <input 
@@ -51,6 +86,11 @@ function App() {
         {list.map(item => <li key={item.id}>{item.value}</li>)}
       </ul>
       <br></br>
+
+
+
+
+
       ___
       <br></br>
       <select 
@@ -66,6 +106,40 @@ function App() {
         <option value="48 months">48 months</option>
 
       </select>
+      <br></br>
+
+
+
+
+
+      ___
+      <br></br>
+      <input 
+        type="text" 
+        placeholder="amount saved"
+        name="amountSaved" 
+        id="amountSaved" 
+        value={amountSaved}
+        onChange={handleAmountSaved}
+      />
+      <br></br>
+
+
+
+
+      
+      ___
+      <br></br>
+      <button onClick={handleSubmit}>submit</button>
+      <br></br>
+
+
+
+
+      
+      ___
+      <br></br>
+      {listOfStocks}
     </>
   )
 }
