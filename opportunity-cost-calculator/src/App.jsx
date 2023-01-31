@@ -139,7 +139,7 @@ function App() {
       
       ___
       <br></br>
-      {listOfStocks}
+      {timeHorizon != "" && amountSaved != "" ? <p>working</p> : <p></p>}
     </>
   )
 }
