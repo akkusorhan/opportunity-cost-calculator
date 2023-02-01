@@ -17,8 +17,6 @@ function App() {
     }
 
     setSingleStock(stocks)
-
-    console.log(stocks);
     
     setList(prev => [...prev, listItem])
     setStocks("")
