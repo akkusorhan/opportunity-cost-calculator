@@ -9,6 +9,7 @@ function App() {
   const [list, setList] = React.useState([])
   const [singleStock, setSingleStock] = React.useState("")
 
+
   // Helper Functions
   function addItem() {
     const listItem = {
