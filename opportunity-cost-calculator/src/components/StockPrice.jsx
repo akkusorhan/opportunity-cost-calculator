@@ -10,7 +10,7 @@ function StockPrice (props) {
         date: null
     })
     React.useEffect(() => {
-        fetch(`https://api.polygon.io/v1/open-close/${props.symbol}/2022-06-14?adjusted=true&apiKey=MXrXoKsreyzlXOqFZZlKE3yGdbTlsieL`)
+        fetch(`https://api.polygon.io/v1/open-close/${props.symbol}/2022-10-14?adjusted=true&apiKey=MXrXoKsreyzlXOqFZZlKE3yGdbTlsieL`)
         .then(response => response.json())
         .then(data => {
             setStockData({
@@ -20,6 +20,7 @@ function StockPrice (props) {
             })
             setSymbol(data.symbol);
             setPrice(data.close)
+            console.log(data)
         })
       .catch(error => console.log(error));
 
