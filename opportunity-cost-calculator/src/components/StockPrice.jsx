@@ -1,6 +1,7 @@
 import React from "react";
 
 function StockPrice (props) {
+    const [price, setPrice] = React.useState(null);
     const [stockData, setStockData] = React.useState({
         symbol: null,
         price: null, 
@@ -16,13 +17,14 @@ function StockPrice (props) {
                 date: data.from
             })
             console.log(data)
+            setPrice(data.close)
         })
       .catch(error => console.log(error));
 
     }, [props.symbol])
     return (
         <div>
-            {stockData ? `closing price for ${stockData.symbol} on ${stockData.date} is $${stockData.price}` : "add stock to list"}
+            {price ? `closing price for ${stockData.symbol} on ${stockData.date} is $${stockData.price}` : "add stock to list"}
         </div>
     )
 }
