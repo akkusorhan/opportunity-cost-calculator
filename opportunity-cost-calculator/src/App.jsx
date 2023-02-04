@@ -37,6 +37,16 @@ function App() {
       setSymbolList={setSymbolList}
       stockData={stockData}
       setStockData={setStockData}
+      //passing amount saved
+      amountSaved={amountSaved}
+      setAmountSaved={setAmountSaved}
+      amountSavedInput={amountSavedInput}
+      setAmountSavedInput={setAmountSavedInput}
+      //passing date input
+      timeHorizon={timeHorizon}
+      setTimeHorizon={setTimeHorizon}
+      timeHorizonInput={timeHorizonInput}
+      setTimeHorizonInput={setTimeHorizonInput}
     />
     </>
   )
