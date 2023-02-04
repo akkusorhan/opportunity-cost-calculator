@@ -1,6 +1,6 @@
 import React from "react";
 
-function TickerInput({ symbolInput, setSymbolInput, symbolList, setSymbolList, stockData, setStockData, symbolData, setSymbolData }) {
+function TickerInput({ symbolInput, setSymbolInput, symbolList, setSymbolList, stockData, setStockData }) {
     function addToListClick() {
         const list = {
             id: Math.random() * 100, 
@@ -29,7 +29,7 @@ function TickerInput({ symbolInput, setSymbolInput, symbolList, setSymbolList, s
 
                 })
                 .catch(error => console.log(error))
-            }
+            } 
             submittedStockSymbol();
         }
         setSymbolList([])
@@ -49,6 +49,8 @@ function TickerInput({ symbolInput, setSymbolInput, symbolList, setSymbolList, s
         {symbolList.map(item => <p key={item.id}>{item.ticker}</p>)}
 
         <button onClick={submitClick}>submit</button>
+
+        
 
         
         </>

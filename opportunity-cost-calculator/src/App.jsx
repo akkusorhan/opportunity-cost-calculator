@@ -6,7 +6,6 @@ function App() {
   const [symbolInput, setSymbolInput] = React.useState("");
   const [symbolList, setSymbolList] = React.useState([])
   const [stockData, setStockData] = React.useState([]);
-  const [symbolData, setSymbolData] = React.useState([])
 
 
   return (
@@ -18,8 +17,6 @@ function App() {
       setSymbolList={setSymbolList}
       stockData={stockData}
       setStockData={setStockData}
-      symbolData={symbolData}
-      setSymbolData={setSymbolData}
     />
     
     </>
