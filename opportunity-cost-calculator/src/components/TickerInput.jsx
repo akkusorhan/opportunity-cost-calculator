@@ -6,7 +6,11 @@ function TickerInput({
         symbolList, 
         setSymbolList, 
         stockData, 
-        setStockData
+        setStockData, 
+        timeHorizon, 
+        setTimeHorizon, 
+        timeHorizonInput, 
+        setTimeHorizonInput
     }) {
     function addToListClick() {
         const list = {
@@ -22,25 +26,40 @@ function TickerInput({
         setSymbolInput("");
     }
 
-
-    function submitClick() {
+    setTimeHorizon(timeHorizonInput) //setting time horizon state before submit, dont forget this code here
+    async function submitClick() {
 
         for (let i = 0; i < symbolList.length; i++) {
 
             const stockTicker = symbolList[i].ticker
             console.log(stockTicker);
 
-            function submittedStockSymbol ()  {
-                fetch(`https://api.polygon.io/v1/open-close/${stockTicker}/2022-04-14?adjusted=true&apiKey=MXrXoKsreyzlXOqFZZlKE3yGdbTlsieL`)
-                .then(response => response.json())
-                .then(data => {
-                    //setStockData(prev => [...prev, data])
-                })
-                .catch(error => console.log(error))
+            async function submittedStockSymbol ()  {
+                const apiCall1 = await fetch(`https://api.polygon.io/v1/open-close/${stockTicker}/${timeHorizon}?adjusted=true&apiKey=MXrXoKsreyzlXOqFZZlKE3yGdbTlsieL`)
+                const response1 = await apiCall1.json()
+
+                const apiCall2 = await fetch(`https://api.polygon.io/v1/open-close/${stockTicker}/${timeHorizon}?adjusted=true&apiKey=MXrXoKsreyzlXOqFZZlKE3yGdbTlsieL`)
+                const response2 = await apiCall2.json()
+
+                //note to future self: use the space below to save the two api calls data to StockData state
+                const apiCallResult = {
+                    symbol: response1.symbol,
+                    pastDate: timeHorizon,
+                    currentDate: timeHorizon,
+                    pastPrice: response1.close,
+                    currentPrice: response1.close,
+                }
+
+                setStockData(prev => [
+                    ...prev, 
+                    apiCallResult
+                ])
+
             } 
             submittedStockSymbol();
         }
         setSymbolList([])
+        setTimeHorizonInput("")
         console.log(stockData)
     }
 
@@ -68,3 +87,21 @@ function TickerInput({
 }
 
 export default TickerInput;
+
+
+// old api call
+                // fetch(`https://api.polygon.io/v1/open-close/${stockTicker}/2022-04-14?adjusted=true&apiKey=MXrXoKsreyzlXOqFZZlKE3yGdbTlsieL`)
+                // .then(response => response.json())
+                // .then(data => {
+                //     const apiCallResult = {
+                //         symbol: data.symbol,
+                //         currentDate: data.from,
+                //         currentPrice: data.close
+                //     }
+
+                //     setStockData(prev => [
+                //         ...prev, 
+                //         apiCallResult
+                //     ])
+                // })
+                // .catch(error => console.log(error))
