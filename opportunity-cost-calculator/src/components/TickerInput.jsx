@@ -10,7 +10,12 @@ function TickerInput({
         timeHorizon, 
         setTimeHorizon, 
         timeHorizonInput, 
-        setTimeHorizonInput
+        setTimeHorizonInput, 
+        amountSaved, 
+        setAmountSaved, 
+        amountSavedInput, 
+        setAmountSavedInput
+        
     }) {
     function addToListClick() {
         const list = {
@@ -27,6 +32,7 @@ function TickerInput({
     }
 
     setTimeHorizon(timeHorizonInput) //setting time horizon state before submit, dont forget this code here
+    setAmountSaved(amountSavedInput) //setting amount saved state before submit, dont forget this code here
     async function submitClick() {
 
         for (let i = 0; i < symbolList.length; i++) {
@@ -35,19 +41,36 @@ function TickerInput({
             console.log(stockTicker);
 
             async function submittedStockSymbol ()  {
+                //creating todays date - make sure to change this later
+                const today = new Date();
+                const dayOfWeek = today.getUTCDay();
+                if (dayOfWeek === 0 || dayOfWeek === 6 || dayOfWeek === 5 || dayOfWeek === 1) {
+                  // 0 is Sunday, 6 is Saturday
+                  today.setDate(today.getDate() - (dayOfWeek + 1));
+                }
+                const year = today.getFullYear();
+                const month = (today.getMonth() + 1).toString().padStart(2, '0');
+                const day = today.getDate().toString().padStart(2, '0');
+                const formattedDate = `${year}-${month}-${day}`;
+                
+
+
                 const apiCall1 = await fetch(`https://api.polygon.io/v1/open-close/${stockTicker}/${timeHorizon}?adjusted=true&apiKey=MXrXoKsreyzlXOqFZZlKE3yGdbTlsieL`)
                 const response1 = await apiCall1.json()
 
-                const apiCall2 = await fetch(`https://api.polygon.io/v1/open-close/${stockTicker}/${timeHorizon}?adjusted=true&apiKey=MXrXoKsreyzlXOqFZZlKE3yGdbTlsieL`)
+                const apiCall2 = await fetch(`https://api.polygon.io/v1/open-close/${stockTicker}/${formattedDate}?adjusted=true&apiKey=MXrXoKsreyzlXOqFZZlKE3yGdbTlsieL`)
                 const response2 = await apiCall2.json()
 
                 //note to future self: use the space below to save the two api calls data to StockData state
                 const apiCallResult = {
                     symbol: response1.symbol,
                     pastDate: timeHorizon,
-                    currentDate: timeHorizon,
+                    currentDate: formattedDate,
                     pastPrice: response1.close,
-                    currentPrice: response1.close,
+                    currentPrice: response2.close,
+                    amountInvested: amountSaved,
+                    rateOfChange: response1.close > response2.close ? ((response1.close - response2.close) / response1.close * -100) / 100 : ((response2.close - response2.close) / response1.close * 100) / 100,
+                    profitLoss: response1.close > response2.close ? (((response1.close - response2.close) / response1.close * -100) / 100) * amountSaved : (((response2.close - response1.close) / response1.close * 100) / 100) * amountSaved
                 }
 
                 setStockData(prev => [
@@ -60,9 +83,9 @@ function TickerInput({
         }
         setSymbolList([])
         setTimeHorizonInput("")
+        setAmountSavedInput("")
         console.log(stockData)
     }
-
     return (
         <>
         <input 
@@ -77,7 +100,17 @@ function TickerInput({
 
         <button onClick={submitClick}>submit</button>
 
-        {stockData.length != 0 ? <p>{stockData.close}</p> : <p>waiting for submit</p>}
+        {stockData.map(item => 
+        <>
+            <p>{item.pastPrice > item.currentPrice ? "losses" : "gains"} for stock {item.symbol} from {item.pastDate} to {item.currentDate}: ${Math.floor(item.profitLoss)}</p>
+            <br/>
+            <p>invested amount: ${item.amountInvested}</p>
+            <p>____________________________________</p>
+
+        </>
+        )}
+
+        {stockData.length != 0 ? "" : <p>waiting for submit</p>}
 
         
 
