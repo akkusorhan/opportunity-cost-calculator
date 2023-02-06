@@ -44,7 +44,7 @@ function TickerInput({
                 //creating todays date - make sure to change this later
                 const today = new Date();
                 const dayOfWeek = today.getUTCDay();
-                if (dayOfWeek === 0 || dayOfWeek === 6 || dayOfWeek === 5 || dayOfWeek === 1) {
+                if (dayOfWeek === 0 || dayOfWeek === 6) {
                   // 0 is Sunday, 6 is Saturday
                   today.setDate(today.getDate() - (dayOfWeek + 1));
                 }
