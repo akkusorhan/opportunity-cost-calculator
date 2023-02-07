@@ -41,17 +41,30 @@ function TickerInput({
             console.log(stockTicker);
 
             async function submittedStockSymbol ()  {
-                //creating todays date - make sure to change this later
+                //creating todays date - make sure to change this later - returns tuesday of the previous week as formattedDate
                 const today = new Date();
                 const dayOfWeek = today.getUTCDay();
-                if (dayOfWeek === 0 || dayOfWeek === 6) {
-                  // 0 is Sunday, 6 is Saturday
-                  today.setDate(today.getDate() - (dayOfWeek + 1));
+                if (dayOfWeek === 1) {
+                // 1 is Monday
+                today.setDate(today.getDate() + 1);
+                } else if (dayOfWeek === 0 || dayOfWeek === 6) {
+                // 0 is Sunday, 6 is Saturday
+                today.setDate(today.getDate() - (dayOfWeek + 2));
+                } else if (dayOfWeek === 3) {
+                    today.setDate(today.getDate() - 1);
+                } else if (dayOfWeek === 4) {
+                    today.setDate(today.getDate() - 2);
+                } else if (dayOfWeek === 5) {
+                    today.setDate(today.getDate() - 3);
+                } else {
+                
                 }
                 const year = today.getFullYear();
                 const month = (today.getMonth() + 1).toString().padStart(2, '0');
                 const day = today.getDate().toString().padStart(2, '0');
                 const formattedDate = `${year}-${month}-${day}`;
+
+
                 
 
 
