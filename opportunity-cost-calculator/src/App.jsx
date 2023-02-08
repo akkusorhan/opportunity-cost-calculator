@@ -1,5 +1,6 @@
 import React from 'react'
 import './App.css'
+import Navbar from "./components/Navbar"
 import DateInput from './components/DateInput';
 import AmountSaved from "./components/AmountSaved"
 import TickerInput from './components/TickerInput';
@@ -16,6 +17,7 @@ function App() {
 
   return (
     <>
+    <Navbar />
     <DateInput 
       timeHorizon={timeHorizon}
       setTimeHorizon={setTimeHorizon}

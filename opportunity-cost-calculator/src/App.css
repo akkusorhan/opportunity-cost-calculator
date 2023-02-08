@@ -8,6 +8,17 @@ body {
     background-color: black;
 }
 
+.nav-bar {
+    border: 1px solid #222326;
+    background-color: #222326;
+}
+
+.logo {
+    margin: 15px;
+    font-weight: 400;
+}
+
+
 .ticker-box {
     background-color: white;
     color: black;
