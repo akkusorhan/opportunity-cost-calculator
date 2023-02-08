@@ -41,7 +41,7 @@ function TickerInput({
             console.log(stockTicker);
 
             async function submittedStockSymbol ()  {
-                //creating todays date - make sure to change this later - returns tuesday of the previous week as formattedDate
+                //creating todays date - make sure to change this later
                 const today = new Date();
                 const dayOfWeek = today.getUTCDay();
                 const daysToTuesday = (dayOfWeek + 7 - 2) % 7;
@@ -121,21 +121,3 @@ function TickerInput({
 }
 
 export default TickerInput;
-
-
-// old api call
-                // fetch(`https://api.polygon.io/v1/open-close/${stockTicker}/2022-04-14?adjusted=true&apiKey=MXrXoKsreyzlXOqFZZlKE3yGdbTlsieL`)
-                // .then(response => response.json())
-                // .then(data => {
-                //     const apiCallResult = {
-                //         symbol: data.symbol,
-                //         currentDate: data.from,
-                //         currentPrice: data.close
-                //     }
-
-                //     setStockData(prev => [
-                //         ...prev, 
-                //         apiCallResult
-                //     ])
-                // })
-                // .catch(error => console.log(error))

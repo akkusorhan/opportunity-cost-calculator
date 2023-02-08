@@ -11,19 +11,7 @@ function App() {
   const [timeHorizon, setTimeHorizon] = React.useState("");
   const [amountSavedInput, setAmountSavedInput] = React.useState("");
   const [amountSaved, setAmountSaved] = React.useState("");
-  const [stockData, setStockData] = React.useState(
-    [
-    //   {
-    //   symbol: null,
-    //   pastDate: null,
-    //   currentDate: null,
-    //   pastPrice: null,
-    //   currentPrice: null,
-    //   amountInvested: null, // amountSaved state variable
-    //   rateOfChange: null, // pastPrice + currentPrice / 2
-    //   profitLoss: null // rateOfChange * amountInvested
-    // }
-  ]);
+  const [stockData, setStockData] = React.useState([]);
 
 
   return (
