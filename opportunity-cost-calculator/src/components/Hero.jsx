@@ -1,5 +1,4 @@
 import React from 'react'
-//import Navbar from "./components/Navbar"
 import DateInput from './DateInput';
 import AmountSaved from "./AmountSaved"
 import TickerInput from './TickerInput';
@@ -19,7 +18,7 @@ function Hero() {
             <h1 className="hero-main-text">Calculate Your Spending <br/>Opportunity Cost.</h1>
             <h3>See your spending dollars invested, over time, in your favorite stocks.</h3>
             <hr/>
-            <DateInput 
+            <h2>Over the last </h2><DateInput 
                 timeHorizon={timeHorizon}
                 setTimeHorizon={setTimeHorizon}
                 timeHorizonInput={timeHorizonInput}
