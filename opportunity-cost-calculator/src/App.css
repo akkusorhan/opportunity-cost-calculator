@@ -42,6 +42,33 @@ body {
     
 }
 
+.input-text {
+    font-weight: 400;
+    font-size: 1.5rem;
+}
+
+.heroInput {
+    background-color: #202020;
+    color: white;
+    border: 0px;
+    padding: 0.75%;
+    margin: 0.75%;
+    border-radius: 8px;
+    font-family: poppins;
+    font-weight: 400;
+    font-size: 1rem;
+}
+
+.tickerInput {
+    background-color: #202020;
+    color: white;
+    border: 0px;
+    padding: 0.75%;
+    border-radius: 8px;
+    font-family: poppins;
+    font-weight: 400;
+
+}
 
 .ticker-box {
     background-color: white;

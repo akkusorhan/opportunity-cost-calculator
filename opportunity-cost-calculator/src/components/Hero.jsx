@@ -18,18 +18,20 @@ function Hero() {
             <h1 className="hero-main-text">Calculate Your Spending <br/>Opportunity Cost.</h1>
             <h3>See your spending dollars invested, over time, in your favorite stocks.</h3>
             <hr/>
-            <h2>Over the last </h2><DateInput 
-                timeHorizon={timeHorizon}
-                setTimeHorizon={setTimeHorizon}
-                timeHorizonInput={timeHorizonInput}
-                setTimeHorizonInput={setTimeHorizonInput}
-            />
+            <h2 className="input-text">Over the last 
+            <DateInput 
+                timeHorizon={timeHorizon} 
+                setTimeHorizon={setTimeHorizon} 
+                timeHorizonInput={timeHorizonInput} 
+                setTimeHorizonInput={setTimeHorizonInput} /> , I've spent 
             <AmountSaved 
-      amountSaved={amountSaved}
-      setAmountSaved={setAmountSaved}
-      amountSavedInput={amountSavedInput}
-      setAmountSavedInput={setAmountSavedInput}
-    />
+                amountSaved={amountSaved}
+                setAmountSaved={setAmountSaved}
+                amountSavedInput={amountSavedInput}
+                setAmountSavedInput={setAmountSavedInput}
+            /> 
+            in <br/>my checking account. </h2>
+    <hr/>
     <br/>
     <TickerInput 
       symbolInput={symbolInput} 

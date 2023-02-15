@@ -9,6 +9,7 @@ function AmountSaved({ amountSaved, setAmountSaved, amountSavedInput, setAmountS
                 placeholder="amount saved"
                 value={amountSavedInput}
                 onChange={(e) => setAmountSavedInput(e.target.value)} 
+                className="heroInput"
             />
         </>
         

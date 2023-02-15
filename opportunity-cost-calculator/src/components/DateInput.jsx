@@ -8,6 +8,7 @@ function DateInput({ timeHorizonInput, setTimeHorizonInput, timeHorizon, setTime
                 placeholder="add date | year-mo-da"
                 value={timeHorizonInput}
                 onChange={(e) => setTimeHorizonInput(e.target.value)} 
+                className="heroInput"
             />
         </>
         

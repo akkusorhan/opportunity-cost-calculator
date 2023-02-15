@@ -94,6 +94,7 @@ function TickerInput({
           placeholder="add ticker to list"
           value={symbolInput}
           onChange={(e) => setSymbolInput(e.target.value)} 
+          className="tickerInput"
         />
         <button onClick={addToListClick}>add to list</button>
         
