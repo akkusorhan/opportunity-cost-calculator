@@ -33,7 +33,12 @@ function TickerInput({
 
     setTimeHorizon(timeHorizonInput) //setting time horizon state before submit, dont forget this code here
     setAmountSaved(amountSavedInput) //setting amount saved state before submit, dont forget this code here
+
     async function submitClick() {
+
+        const testRequest = await fetch("https://www.alphavantage.co/query?function=TIME_SERIES_WEEKLY_ADJUSTED&symbol=IBM&apikey=demo");
+        const testRequestResponse = await testRequest.json()
+        console.log(testRequestResponse)
 
         for (let i = 0; i < symbolList.length; i++) {
 

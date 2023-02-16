@@ -32,7 +32,7 @@ function Hero() {
             /> 
             in <br/>my checking account. </h2>
     <hr/>
-    <br/>
+    <h3>Choose the stocks you would like to see your savings invested in.</h3>
     <TickerInput 
       symbolInput={symbolInput} 
       setSymbolInput={setSymbolInput} 
