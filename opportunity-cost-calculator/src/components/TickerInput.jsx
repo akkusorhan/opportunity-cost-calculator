@@ -36,7 +36,7 @@ function TickerInput({
 
     async function submitClick() {
 
-        const testRequest = await fetch("https://www.alphavantage.co/query?function=TIME_SERIES_WEEKLY_ADJUSTED&symbol=IBM&apikey=demo");
+        const testRequest = await fetch("https://www.alphavantage.co/query?function=TIME_SERIES_MONTHLY&symbol=IBM&apikey=ZTZXMK21QASRX3QE");
         const testRequestResponse = await testRequest.json()
         console.log(testRequestResponse)
 
