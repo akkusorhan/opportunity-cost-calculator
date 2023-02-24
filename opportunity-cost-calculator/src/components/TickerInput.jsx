@@ -36,10 +36,6 @@ function TickerInput({
 
     async function submitClick() {
 
-        const testRequest = await fetch("https://www.alphavantage.co/query?function=TIME_SERIES_MONTHLY&symbol=IBM&apikey=ZTZXMK21QASRX3QE");
-        const testRequestResponse = await testRequest.json()
-        console.log(testRequestResponse)
-
         for (let i = 0; i < symbolList.length; i++) {
 
             const stockTicker = symbolList[i].ticker
