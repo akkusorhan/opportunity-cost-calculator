@@ -45,8 +45,12 @@ function TickerInput({
                 //creating todays date - make sure to change this later
                 const today = new Date();
                 const dayOfWeek = today.getUTCDay();
-                const daysToTuesday = (dayOfWeek + 7 - 2) % 7;
-                today.setDate(today.getDate() - daysToTuesday);
+                if (dayOfWeek === 0 || dayOfWeek === 6 || dayOfWeek === 1) {
+                  // 0 is Sunday, 6 is Saturday
+                  today.setDate(today.getDate() - (dayOfWeek - 3));
+                } else if (dayOfWeek === 2 || dayOfWeek === 3 || dayOfWeek === 4 || dayOfWeek === 5) {
+                    today.setDate(today.getDate() - (dayOfWeek - 1));
+                }
                 const year = today.getFullYear();
                 const month = (today.getMonth() + 1).toString().padStart(2, '0');
                 const day = today.getDate().toString().padStart(2, '0');
@@ -87,13 +91,14 @@ function TickerInput({
     return (
         <>
         <input 
-          type="text" 
-          placeholder="add ticker to list"
-          value={symbolInput}
-          onChange={(e) => setSymbolInput(e.target.value)} 
-          className="tickerInput"
+            type="text" 
+            placeholder="add ticker to list"
+            value={symbolInput}
+            onChange={(e) => setSymbolInput(e.target.value)} 
+            className="tickerInput"
         />
         <button onClick={addToListClick}>add to list</button>
+        
         
         {symbolList.map(item => <p key={item.id}>{item.ticker}</p>)}
 

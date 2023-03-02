@@ -2,6 +2,7 @@ import React from 'react'
 import DateInput from './DateInput';
 import AmountSaved from "./AmountSaved"
 import TickerInput from './TickerInput';
+import Result from './Result';
 
 function Hero() {
     const [symbolInput, setSymbolInput] = React.useState("");
@@ -18,7 +19,7 @@ function Hero() {
             <h1 className="hero-main-text">Calculate Your Spending <br />Opportunity Cost.</h1>
             <h3>See your spending dollars invested, over time, in your favorite stocks.</h3>
             <hr />
-            <h2 className="input-text">Over the last 
+            <h2 className="input-text">Since  
             <DateInput
                 timeHorizon={timeHorizon}
                 setTimeHorizon={setTimeHorizon}
@@ -51,6 +52,8 @@ function Hero() {
                 timeHorizonInput={timeHorizonInput}
                 setTimeHorizonInput={setTimeHorizonInput}
             />
+
+            <Result />
 
         </section>
     )

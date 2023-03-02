@@ -77,3 +77,13 @@ body {
     padding: 10px;
     margin: 10px;
 }
+
+.stock-input {
+    display: flex;
+}
+
+.line-chart-container {
+    height: 500px;
+    background-color: #1B1D21;
+    border-radius: 10px;
+}
