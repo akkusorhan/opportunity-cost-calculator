@@ -13,16 +13,13 @@ function Hero() {
     const [amountSaved, setAmountSaved] = React.useState("");
     const [stockData, setStockData] = React.useState([]);
 
-    //test state
-    const [chartData, setChartData] = React.useState([]);
-
 
     return (
         <section className="hero-content">
             <h1 className="hero-main-text">Calculate Your Spending <br />Opportunity Cost.</h1>
             <h3>See your spending dollars invested, over time, in your favorite stocks.</h3>
             <hr />
-            <h2 className="input-text">Over the last   
+            <h2 className="input-text">Since  
             <DateInput
                 timeHorizon={timeHorizon}
                 setTimeHorizon={setTimeHorizon}
@@ -54,16 +51,9 @@ function Hero() {
                 setTimeHorizon={setTimeHorizon}
                 timeHorizonInput={timeHorizonInput}
                 setTimeHorizonInput={setTimeHorizonInput}
-                //passing the test chart data state (change later)
-                chartData={chartData}
-                setChartData={setChartData}
             />
 
-            <Result 
-                //passing the test chart data state (change later)
-                chartData={chartData}
-                setChartData={setChartData}
-            />
+            <Result />
 
         </section>
     )

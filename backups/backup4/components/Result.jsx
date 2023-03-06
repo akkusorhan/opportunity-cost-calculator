@@ -58,7 +58,7 @@ const data = [
     }
   ]
 
-function Result( chartData, {/* make sure you pass in data prop */ }) {
+function Result({/* make sure you pass in data prop */ }) {
 
     return (
     <div className="line-chart-container">
