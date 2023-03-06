@@ -47,9 +47,9 @@ function TickerInput({
                 const dayOfWeek = today.getUTCDay();
                 if (dayOfWeek === 0 || dayOfWeek === 6 || dayOfWeek === 1) {
                   // 0 is Sunday, 6 is Saturday
-                  today.setDate(today.getDate() - (dayOfWeek - 3));
+                  today.setDate(today.getDate() + (dayOfWeek - 3));
                 } else if (dayOfWeek === 2 || dayOfWeek === 3 || dayOfWeek === 4 || dayOfWeek === 5) {
-                    today.setDate(today.getDate() - (dayOfWeek - 1));
+                    today.setDate(today.getDate() + (dayOfWeek - 1));
                 }
                 const year = today.getFullYear();
                 const month = (today.getMonth() + 1).toString().padStart(2, '0');
