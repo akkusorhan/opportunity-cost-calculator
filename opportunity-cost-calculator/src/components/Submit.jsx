@@ -1,6 +1,6 @@
 import React from "react";
 
-function Submit({amountSaved, symbolList, timeHorizon, setChartData} ) {
+function Submit({amountSaved, symbolList, timeHorizon, chartData, setChartData} ) {
 
     async function getPastDate(timelength) {
         for (let i = 0; i < timelength; i++) {
@@ -13,33 +13,23 @@ function Submit({amountSaved, symbolList, timeHorizon, setChartData} ) {
             let iDate = new Date(timeLengthDate.getFullYear(), timeLengthDate.getMonth() + i, timeLengthDate.getDate()); 
             iDate.getUTCDay() == 6 || iDate.getUTCDay() == 0 ? iDate.setUTCDate(iDate.getUTCDate() - 2) && console.log("date changed") : null;
 
-           let iDateString = iDate.toString;
+            let iDateString = iDate.toISOString().substring(0, 10);
+            console.log(iDateString);
 
-
-
-            console.log(iDate.toString);
-
+            let request = await fetch(`https://api.polygon.io/v1/open-close/AAPL/${iDateString}?adjusted=true&apiKey=MXrXoKsreyzlXOqFZZlKE3yGdbTlsieL`);
+            let response = await request.json();
+            let dataPointData = [];
+            dataPointData.push({
+                "x": `${iDateString}`,
+                "y": `${response.close}`,
+            })
+            console.log(dataPointData)
         }
-
     }
 
-    async function getLineChartDataPoints() {
+    async function submitClick() {
         getPastDate(3)
-
-    }
-
-    function submitClick() {
-        const amountSavedValue = amountSaved;
-        const amountInvestedValue = amountSavedValue / symbolList.length;
-
-        const lineChartPoints = getLineChartDataPoints()
-        const data = {
-            "id": "norway",
-            "color": "hsl(5, 70%, 50%)",
-            "data": [lineChartPoints]
-        }
-
-        setChartData(data)
+        console.log(chartData);
 
     }
     return (

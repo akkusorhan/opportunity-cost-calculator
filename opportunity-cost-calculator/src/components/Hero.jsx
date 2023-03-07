@@ -13,21 +13,10 @@ function Hero() {
 
     //test state
     const [chartData, setChartData] = React.useState([{
-        "id": "norway",
+        "id": "chartData",
         "color": "hsl(5, 70%, 50%)",
-        "data": [
-          {
-            "x": "plane",
-            "y": 224
-          },
-          {
-            "x": "helicopter",
-            "y": 169
-          },
-          {
-            "x": "boat",
-            "y": 246
-          },]}]);
+        "data": null
+    }]);
 
 
     return (
@@ -69,6 +58,7 @@ function Hero() {
                 //passing date input
                 timeHorizon={timeHorizon}
                 //passing chartdata
+                chartData={chartData}
                 setChartData={setChartData}
             />
 

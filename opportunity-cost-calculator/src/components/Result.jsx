@@ -53,7 +53,7 @@ const data = [
         {
           "x": "others",
           "y": 2
-        }
+        },
       ]
     }
   ]
