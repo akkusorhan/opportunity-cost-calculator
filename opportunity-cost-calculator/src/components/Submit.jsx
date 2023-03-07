@@ -1,6 +1,6 @@
 import React from "react";
 
-function Submit({amountSaved, symbolList, timeHorizon, chartData, setChartData} ) {
+function Submit({amountSaved, symbolList, timeHorizon, chartData, setChartData, dataPoints, setDataPoints} ) {
 
     async function getPastDate(timelength) {
         for (let i = 0; i < timelength; i++) {
@@ -18,18 +18,27 @@ function Submit({amountSaved, symbolList, timeHorizon, chartData, setChartData} 
 
             let request = await fetch(`https://api.polygon.io/v1/open-close/AAPL/${iDateString}?adjusted=true&apiKey=MXrXoKsreyzlXOqFZZlKE3yGdbTlsieL`);
             let response = await request.json();
-            let dataPointData = [];
-            dataPointData.push({
+
+            let dataPointData = {
                 "x": `${iDateString}`,
                 "y": `${response.close}`,
-            })
-            console.log(dataPointData)
+            }
+            setDataPoints(prev => [
+                ...prev, 
+                { 
+                "x": `${iDateString}`,
+                "y": `${response.close}`,  
+                }
+            ])
+            
+
+
         }
     }
 
     async function submitClick() {
         getPastDate(3)
-        console.log(chartData);
+        console.log(dataPoints);
 
     }
     return (
