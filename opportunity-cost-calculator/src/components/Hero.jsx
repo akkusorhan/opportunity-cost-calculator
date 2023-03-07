@@ -2,19 +2,32 @@ import React from 'react'
 import DateInput from './DateInput';
 import AmountSaved from "./AmountSaved"
 import TickerInput from './TickerInput';
+import Submit from './Submit';
 import Result from './Result';
 
 function Hero() {
     const [symbolInput, setSymbolInput] = React.useState("");
     const [symbolList, setSymbolList] = React.useState([]);
-    const [timeHorizonInput, setTimeHorizonInput] = React.useState("");
     const [timeHorizon, setTimeHorizon] = React.useState("");
-    const [amountSavedInput, setAmountSavedInput] = React.useState("");
     const [amountSaved, setAmountSaved] = React.useState("");
-    const [stockData, setStockData] = React.useState([]);
 
     //test state
-    const [chartData, setChartData] = React.useState([]);
+    const [chartData, setChartData] = React.useState([{
+        "id": "norway",
+        "color": "hsl(5, 70%, 50%)",
+        "data": [
+          {
+            "x": "plane",
+            "y": 224
+          },
+          {
+            "x": "helicopter",
+            "y": 169
+          },
+          {
+            "x": "boat",
+            "y": 246
+          },]}]);
 
 
     return (
@@ -26,14 +39,10 @@ function Hero() {
             <DateInput
                 timeHorizon={timeHorizon}
                 setTimeHorizon={setTimeHorizon}
-                timeHorizonInput={timeHorizonInput}
-                setTimeHorizonInput={setTimeHorizonInput}
             />, I've spent 
             <AmountSaved
                 amountSaved={amountSaved}
                 setAmountSaved={setAmountSaved}
-                amountSavedInput={amountSavedInput}
-                setAmountSavedInput={setAmountSavedInput}
             /> in <br/> my personal checking account.</h2>
             <hr/>
             <h3>Choose the stocks you would like to see your savings invested in.</h3>
@@ -42,20 +51,24 @@ function Hero() {
                 setSymbolInput={setSymbolInput}
                 symbolList={symbolList}
                 setSymbolList={setSymbolList}
-                stockData={stockData}
-                setStockData={setStockData}
                 //passing amount saved
                 amountSaved={amountSaved}
                 setAmountSaved={setAmountSaved}
-                amountSavedInput={amountSavedInput}
-                setAmountSavedInput={setAmountSavedInput}
                 //passing date input
                 timeHorizon={timeHorizon}
                 setTimeHorizon={setTimeHorizon}
-                timeHorizonInput={timeHorizonInput}
-                setTimeHorizonInput={setTimeHorizonInput}
                 //passing the test chart data state (change later)
                 chartData={chartData}
+                setChartData={setChartData}
+            />
+
+            <Submit 
+                symbolList={symbolList}
+                //passing amount saved
+                amountSaved={amountSaved}
+                //passing date input
+                timeHorizon={timeHorizon}
+                //passing chartdata
                 setChartData={setChartData}
             />
 
