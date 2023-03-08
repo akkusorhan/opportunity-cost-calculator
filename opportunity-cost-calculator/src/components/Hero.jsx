@@ -13,11 +13,7 @@ function Hero() {
 
     //test state
     const [dataPoints, setDataPoints] = React.useState([])
-    const [chartData, setChartData] = React.useState([{
-        "id": "chartData",
-        "color": "hsl(5, 70%, 50%)",
-        "data": null
-    }]);
+    const [chartData, setChartData] = React.useState(null);
 
 
     return (
@@ -61,15 +57,15 @@ function Hero() {
                 //passing chartdata
                 chartData={chartData}
                 setChartData={setChartData}
-            />
-
-            <Result 
-                //passing the test chart data state (change later)
-                chartData={chartData}
-                setChartData={setChartData}
+                //passing datapoints
                 dataPoints={dataPoints}
                 setDataPoints={setDataPoints}
             />
+            
+            <Result 
+                chartData={chartData}
+            />
+            
 
         </section>
     )
