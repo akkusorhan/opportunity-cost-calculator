@@ -15,6 +15,9 @@ function Hero() {
     const [dataPoints, setDataPoints] = React.useState([])
     const [chartData, setChartData] = React.useState(null);
 
+    //more test state
+    const [numberOfShares, setNumberOfShares] = React.useState();
+
 
     return (
         <section className="hero-content">
@@ -60,6 +63,9 @@ function Hero() {
                 //passing datapoints
                 dataPoints={dataPoints}
                 setDataPoints={setDataPoints}
+                //passing number of shares
+                numberOfShares={numberOfShares}
+                setNumberOfShares={setNumberOfShares}
             />
             
             <Result 
