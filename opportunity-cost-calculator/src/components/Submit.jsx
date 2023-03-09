@@ -1,8 +1,9 @@
 import React from "react";
 
 function Submit({amountSaved, symbolList, timeHorizon, chartData, setChartData, dataPoints, setDataPoints, numberOfShares, setNumberOfShares} ) {
-        async function getPastDate(timelength) {
-        const dataPoints = [];
+        async function getPastDate(timelength, ticker, savedAmount) {
+        let dataPoints = [];
+        let amountOfShares;
 
         for (let i = 0; i < timelength; i++) {
             let today = new Date();// create a new date object for today's date
@@ -16,31 +17,44 @@ function Submit({amountSaved, symbolList, timeHorizon, chartData, setChartData, 
 
             let iDateString = iDate.toISOString().substring(0, 10); //returns YYYY-MM-DD
 
-            let request = await fetch(`https://api.polygon.io/v1/open-close/AAPL/${iDateString}?adjusted=true&apiKey=MXrXoKsreyzlXOqFZZlKE3yGdbTlsieL`);
+            let request = await fetch(`https://api.polygon.io/v1/open-close/${ticker}/${iDateString}?adjusted=true&apiKey=MXrXoKsreyzlXOqFZZlKE3yGdbTlsieL`);
             let response = await request.json();
 
-            let dataPointData = {
-                "x": `${iDateString}`,
-                "y": `${response.close}`,
+
+            if (i == 0) {
+                amountOfShares = savedAmount / response.close;
+                console.log(amountOfShares + response.close)
+                let dataPointData = {
+                    "x": `${iDateString}`,
+                    "y": `${response.close * amountOfShares}`,
+                }
+                dataPoints.push(dataPointData);
+            } else {
+                let dataPointData = {
+                    "x": `${iDateString}`,
+                    "y": `${response.close * amountOfShares}`,
+                }
+                dataPoints.push(dataPointData);
             }
-
-            dataPoints.push(dataPointData);
-            
-
 
         }
 
-        await setChartData([{
-            "id": "chartData",
+        await setChartData(prev => [...prev, {
+            "id": ticker,
             "color": "hsl(5, 70%, 50%)",
             "data": dataPoints
-        }])
-        
+        },]
+        )
+    }  
 
+    async function compileResults() {
+        for (let i = 0; i < symbolList.length; i++) {
+            await getPastDate(9, symbolList[i].ticker, amountSaved);
+        }
     }
 
     async function submitClick() {
-        await getPastDate(16)
+        await compileResults();
 
     }
     return (

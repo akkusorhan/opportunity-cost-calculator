@@ -10,9 +10,9 @@ function DateInput({timeHorizon, setTimeHorizon }) {
             onChange={(e) => setTimeHorizon(prev => prev = e.target.value)}
             className="heroInput"
             >
-                <option value="3 months">3 months</option>
-                <option value="6 months">6 months</option>
-                <option value="9 months">9 months</option>
+                <option value="3">3 months</option>
+                <option value="6">6 months</option>
+                <option value="9">9 months</option>
             </select>
         </>
         

@@ -12,8 +12,7 @@ function Hero() {
     const [amountSaved, setAmountSaved] = React.useState("");
 
     //test state
-    const [dataPoints, setDataPoints] = React.useState([])
-    const [chartData, setChartData] = React.useState(null);
+    const [chartData, setChartData] = React.useState([]);
 
     //more test state
     const [numberOfShares, setNumberOfShares] = React.useState();
@@ -60,9 +59,6 @@ function Hero() {
                 //passing chartdata
                 chartData={chartData}
                 setChartData={setChartData}
-                //passing datapoints
-                dataPoints={dataPoints}
-                setDataPoints={setDataPoints}
                 //passing number of shares
                 numberOfShares={numberOfShares}
                 setNumberOfShares={setNumberOfShares}
@@ -70,6 +66,7 @@ function Hero() {
             
             <Result 
                 chartData={chartData}
+                symbolList={symbolList}
             />
             
 

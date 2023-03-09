@@ -1,12 +1,12 @@
 import React from "react";
 import { ResponsiveLine } from '@nivo/line'
 
-function Result({chartData}) {
+function Result({chartData, symbolList}) {
 
     return (
       <div className="line-chart-container">
 
-      {chartData === null ? null : 
+      {chartData.length != symbolList.length ? null : 
         
           <ResponsiveLine
           data={chartData}
