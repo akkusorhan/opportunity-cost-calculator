@@ -13,7 +13,7 @@ function Hero() {
 
     //test state
     const [chartData, setChartData] = React.useState([]);
-    const [resultData, setResultData] = React.useState()
+    const [resultData, setResultData] = React.useState("")
 
     //more test state
     const [numberOfShares, setNumberOfShares] = React.useState();
@@ -53,10 +53,13 @@ function Hero() {
 
             <Submit 
                 symbolList={symbolList}
+                setSymbolList={setSymbolList}
                 //passing amount saved
                 amountSaved={amountSaved}
+                setAmountSaved={setAmountSaved}
                 //passing date input
                 timeHorizon={timeHorizon}
+                setTimeHorizon={setTimeHorizon}
                 //passing chartdata
                 chartData={chartData}
                 setChartData={setChartData}
@@ -68,15 +71,15 @@ function Hero() {
                 setResultData={setResultData}
             />
             
-            <Result 
-                chartData={chartData}
-                symbolList={symbolList}
-                resultData={resultData}
-            />
-            
 
         </section>
     )
 }
 
 export default Hero;
+
+/* <Result 
+                chartData={chartData}
+                symbolList={symbolList}
+                resultData={resultData}
+            />*/

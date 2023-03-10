@@ -1,6 +1,6 @@
 import React from "react";
 
-function Submit({amountSaved, symbolList, timeHorizon, chartData, setChartData, numberOfShares, setNumberOfShares, resultData, setResultData} ) {
+function Submit({amountSaved, setAmountSaved, symbolList, setSymbolList, timeHorizon, setTimeHorizon, chartData, setChartData, numberOfShares, setNumberOfShares, resultData, setResultData} ) {
     function getRandomColor() {
         const hue = Math.floor(Math.random() * 360);
         const saturation = Math.floor(Math.random() * 100);
@@ -8,16 +8,10 @@ function Submit({amountSaved, symbolList, timeHorizon, chartData, setChartData, 
         return `hsl(${hue}, ${saturation}%, ${lightness}%)`;
       }
       
-
-
-
-
-
-        async function getPastDate(timelength, ticker, savedAmount) {
+      async function getPastDate(timelength, ticker, savedAmount) {
         let dataPoints = [];
         let amountOfShares;
         let investedAmount = savedAmount / (symbolList.length)
-        console.log(investedAmount)
 
         for (let i = 0; i < timelength; i++) {
             let today = new Date();// create a new date object for today's date
@@ -62,12 +56,12 @@ function Submit({amountSaved, symbolList, timeHorizon, chartData, setChartData, 
 
     async function compileResults() {
         for (let i = 0; i < symbolList.length; i++) {
-            await getPastDate(12, symbolList[i].ticker, amountSaved);
+            await getPastDate(timeHorizon, symbolList[i].ticker, amountSaved);
         }
     }
 
-    async function submitClick() {
-        await compileResults();
+    function submitClick() {
+        compileResults();
 
     }
     return (
