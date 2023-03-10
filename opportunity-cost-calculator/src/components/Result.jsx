@@ -2,11 +2,12 @@ import React from "react";
 import { ResponsiveLine } from '@nivo/line'
 
 function Result({chartData, symbolList}) {
+    console.log(chartData)
 
     return (
       <div className="line-chart-container">
 
-      {chartData.length != symbolList.length ? null : 
+      {chartData.length != symbolList.length ? <p>waiting for submit</p> : 
         
           <ResponsiveLine
           data={chartData}

@@ -1,9 +1,23 @@
 import React from "react";
 
-function Submit({amountSaved, symbolList, timeHorizon, chartData, setChartData, dataPoints, setDataPoints, numberOfShares, setNumberOfShares} ) {
+function Submit({amountSaved, symbolList, timeHorizon, chartData, setChartData, numberOfShares, setNumberOfShares, resultData, setResultData} ) {
+    function getRandomColor() {
+        const hue = Math.floor(Math.random() * 360);
+        const saturation = Math.floor(Math.random() * 100);
+        const lightness = Math.floor(Math.random() * 100);
+        return `hsl(${hue}, ${saturation}%, ${lightness}%)`;
+      }
+      
+
+
+
+
+
         async function getPastDate(timelength, ticker, savedAmount) {
         let dataPoints = [];
         let amountOfShares;
+        let investedAmount = savedAmount / (symbolList.length)
+        console.log(investedAmount)
 
         for (let i = 0; i < timelength; i++) {
             let today = new Date();// create a new date object for today's date
@@ -22,17 +36,16 @@ function Submit({amountSaved, symbolList, timeHorizon, chartData, setChartData, 
 
 
             if (i == 0) {
-                amountOfShares = savedAmount / response.close;
-                console.log(amountOfShares + response.close)
+                amountOfShares = investedAmount / response.close;
                 let dataPointData = {
                     "x": `${iDateString}`,
-                    "y": `${response.close * amountOfShares}`,
+                    "y": `${response.close * amountOfShares}`
                 }
                 dataPoints.push(dataPointData);
             } else {
                 let dataPointData = {
                     "x": `${iDateString}`,
-                    "y": `${response.close * amountOfShares}`,
+                    "y": `${response.close * amountOfShares}`
                 }
                 dataPoints.push(dataPointData);
             }
@@ -41,7 +54,7 @@ function Submit({amountSaved, symbolList, timeHorizon, chartData, setChartData, 
 
         await setChartData(prev => [...prev, {
             "id": ticker,
-            "color": "hsl(5, 70%, 50%)",
+            "color": getRandomColor(),
             "data": dataPoints
         },]
         )
@@ -49,7 +62,7 @@ function Submit({amountSaved, symbolList, timeHorizon, chartData, setChartData, 
 
     async function compileResults() {
         for (let i = 0; i < symbolList.length; i++) {
-            await getPastDate(9, symbolList[i].ticker, amountSaved);
+            await getPastDate(12, symbolList[i].ticker, amountSaved);
         }
     }
 

@@ -13,6 +13,7 @@ function Hero() {
 
     //test state
     const [chartData, setChartData] = React.useState([]);
+    const [resultData, setResultData] = React.useState()
 
     //more test state
     const [numberOfShares, setNumberOfShares] = React.useState();
@@ -62,11 +63,15 @@ function Hero() {
                 //passing number of shares
                 numberOfShares={numberOfShares}
                 setNumberOfShares={setNumberOfShares}
+                // passing result data'
+                resultData={resultData}
+                setResultData={setResultData}
             />
             
             <Result 
                 chartData={chartData}
                 symbolList={symbolList}
+                resultData={resultData}
             />
             
 
