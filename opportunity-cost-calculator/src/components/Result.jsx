@@ -322,12 +322,12 @@ function Result({chartData, symbolList, resultData}) {
           enableGridX={false}
           enableGridY={false}
           colors={{ scheme: 'nivo', }}
-          lineWidth={3}
-          pointSize={5}
+          lineWidth={1}
+          pointSize={3}
           pointColor={{ from: 'color', modifiers: [] }}
           pointBorderColor={{ from: 'color', modifiers: [] }}
           pointLabelYOffset={-12}
-          enableSlices="x"
+          enableSlices="y"
           enableCrosshair={false}
           useMesh={true}
           legends={[]}
@@ -340,7 +340,7 @@ function Result({chartData, symbolList, resultData}) {
                   "container": {
                       "background": "#212121",
                       "color": "#ffffff", 
-                      "fontSize": "12px"
+                      "fontSize": "10px"
   
                   }}}}
       />

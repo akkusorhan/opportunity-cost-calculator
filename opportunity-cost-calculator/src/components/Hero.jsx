@@ -70,6 +70,12 @@ function Hero() {
                 resultData={resultData}
                 setResultData={setResultData}
             />
+
+<Result 
+                chartData={chartData}
+                symbolList={symbolList}
+                resultData={resultData}
+            />
             
 
         </section>
