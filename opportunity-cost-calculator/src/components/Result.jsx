@@ -327,7 +327,7 @@ function Result({chartData, symbolList, resultData}) {
           pointColor={{ from: 'color', modifiers: [] }}
           pointBorderColor={{ from: 'color', modifiers: [] }}
           pointLabelYOffset={-12}
-          enableSlices="y"
+          enableSlices="x"
           enableCrosshair={false}
           useMesh={true}
           legends={[]}
