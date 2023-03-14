@@ -14,6 +14,7 @@ function Home() {
     const [symbolList, setSymbolList] = React.useState([])
 
     const [searchData, setSearchData] = React.useState([])
+    const [companyLogo, setCompanyLogo] = React.useState()
 
     return (
         <>
@@ -32,6 +33,8 @@ function Home() {
                 setSymbolList={setSymbolList}
                 searchData={searchData}
                 setSearchData={setSearchData}
+                companyLogo={companyLogo}
+                setCompanyLogo={setCompanyLogo}
             />
 
         </>
