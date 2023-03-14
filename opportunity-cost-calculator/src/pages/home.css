@@ -1,7 +1,31 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
+/* ===== Scrollbar CSS ===== */
+  /* Firefox */
+  * {
+    scrollbar-width: auto;
+    scrollbar-color: #ababab #ffffff;
+  }
+
+  /* Chrome, Edge, and Safari */
+  *::-webkit-scrollbar {
+    width: 16px;
+  }
+
+  *::-webkit-scrollbar-track {
+    background: none;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background-color: #ababab;
+    border-radius: 10px;
+    border: 3px solid #ffffff;
+  }
+
 body {
-    background: url("../assets/black-gradient-background-blurred.png");
+    background-image: url("../assets/black-gradient-background-blurred.png");
+    background-size: cover;
+    background-repeat: no-repeat;
     font-family: "Poppins", sans-serif;
 }
 
@@ -12,9 +36,8 @@ body {
     height: 3.32rem;
     background: linear-gradient(94.87deg, rgba(232, 232, 232, 0.4) 0.89%, rgba(230, 230, 230, 0.25) 100%);
     
+    border: 1px solid rgb(190, 190, 190);
     border-radius: 8px;
-    border: 1px solid rgba(233, 233, 233, 0.6);
-    
 
     display: flex;
     align-items: center;
@@ -62,3 +85,98 @@ input[type="number"]::-webkit-inner-spin-button {
   }
 
 /*  -----------------------------------*/
+/* dateInput input styling -----------------------------------*/
+
+.dateInput {
+    box-sizing: border-box;
+
+    width: 10.7rem;
+    height: 3.32rem;
+
+    background: linear-gradient(94.87deg, rgba(232, 232, 232, 0.4) 0.89%, rgba(230, 230, 230, 0.25) 100%);
+    border-radius: 8px;
+    border: 1px solid rgb(190, 190, 190);
+
+    display: flex;
+    align-items: center;
+    font-size: 1.32rem;
+    padding: 0.75rem;
+    color: white;
+    outline: none;
+
+}
+
+.dateInput option {
+    background-color: white;
+    color: black;
+}
+
+@media (max-width: 450px) {
+    .dateInput {
+        height: 2.25rem;
+        width: 8.125rem;
+        font-size: 1.0625rem;
+        padding: 0.5rem;
+    }  
+    
+  }
+
+/*  -----------------------------------*/
+/* tickerInput input styling -----------------------------------*/
+.tickerInput-container {
+    box-sizing: border-box;
+    width: 22.75rem;
+    height: 3.32rem;
+    background: linear-gradient(94.87deg, rgba(232, 232, 232, 0.4) 0.89%, rgba(230, 230, 230, 0.25) 100%);
+    
+    border: 1px solid rgb(190, 190, 190);
+    border-radius: 8px;
+
+    display: flex;
+    align-items: center;
+    font-size: 1.32rem;
+    padding: 0.75rem;
+
+    color: white;
+    margin-bottom: 0px;
+}
+
+.tickerInput-container input {
+    width: 100%;
+    height: 100%;
+    font-size: 1.32rem;
+    background: none;
+    border: none;
+    color: white;
+}
+
+.tickerInput-container input:focus {
+    outline: none;
+    height: 10.32rem;
+}
+
+.dropdown {
+    background-color: white;
+    width: 22.75rem;
+    height: 15rem;
+    margin-top: 0.25rem;
+    overflow: scroll;
+    overflow-x: hidden;
+    border-radius: 8px;
+}
+
+.dropdown-result {
+    display: flex;
+    justify-content: space-between;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+}
+
+.dropdown-name-text {
+    font-size: 1rem;
+}
+
+.dropdown-ticker-text {
+    font-size: 1rem;
+    font-weight: bold;
+}
