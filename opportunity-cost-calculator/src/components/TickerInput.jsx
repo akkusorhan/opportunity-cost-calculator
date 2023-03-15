@@ -10,7 +10,7 @@ function TickerInput({ symbolInput, setSymbolInput, symbolList, setSymbolList, s
             let request = await fetch(`https://api.polygon.io/v3/reference/tickers?search=${symbolInput}&active=true&apiKey=MXrXoKsreyzlXOqFZZlKE3yGdbTlsieL`);
             let response = await request.json();
     
-            let searchResults = response.results.filter(item => item.market = "us" && item.ticker.length <= 4).slice(0, 25);
+            let searchResults = response.results.filter(item => item.market = "us" && item.ticker.length <= 4).slice(0, 15);
     
             for (let i = 0; i < searchResults.length; i++) {
                 let companyTicker = searchResults[i].ticker;
