@@ -36,7 +36,7 @@ function TickerInput({ symbolInput, setSymbolInput, symbolList, setSymbolList, s
                 {searchData.map((item) => {
                     function addToListClick() {
                         const list = {
-                            id: Math.random(), 
+                            id: Math.random() * 31.234, 
                             ticker: item.ticker, 
                             name: item.name, 
                             logo: item.logo
@@ -50,10 +50,10 @@ function TickerInput({ symbolInput, setSymbolInput, symbolList, setSymbolList, s
                     }
                     return (
                         <>
-                            <div key={Math.random()} className="dropdown-result" onClick={addToListClick}>
-                                <img key={Math.random()} src={item.logo} className="dropdown-company-logo"/>
-                                <p key={Math.random()} className="dropdown-name-text">{item.name}</p>
-                                <p key={Math.random()} className="dropdown-ticker-text">${item.ticker}</p>
+                            <div key={Math.random() * 31.234} className="dropdown-result" onClick={addToListClick}>
+                                <img key={Math.random() * 12.945} src={item.logo} className="dropdown-company-logo"/>
+                                <p key={Math.random() * 9.234} className="dropdown-name-text">{item.name}</p>
+                                <p key={Math.random() * 6.234} className="dropdown-ticker-text">${item.ticker}</p>
                             </div>
                         </>
                 )})}
@@ -66,10 +66,10 @@ function TickerInput({ symbolInput, setSymbolInput, symbolList, setSymbolList, s
             <div key={Math.random()} className="selected-stocks-container">
                     {symbolList.map(item => {
                         return (
-                            <div key={Math.random()} className="selected-stocks-item">
-                                <p key={Math.random()}>x</p>
-                                <img key={Math.random()} src={`${item.logo}`} />
-                                <p key={Math.random()}>{item.name}</p>
+                            <div key={item.ticker} className="selected-stocks-item">
+                                <p key={Math.random() * 100} className="selected-stocks-item-close-btn" onClick={null}>x</p>
+                                <img key={Math.random() * 100} src={`${item.logo}`} />
+                                <p key={Math.random() * 100}>${item.ticker}</p>
                             </div>
                             
                         )
@@ -85,7 +85,7 @@ function TickerInput({ symbolInput, setSymbolInput, symbolList, setSymbolList, s
             <div className="tickerInput-container">
                 <input 
                     type="text"
-                    placeholder="add ticker to list"
+                    placeholder="Search For Your Favorite Stocks"
                     value={symbolInput} 
                     onChange={handleChange}
                     className="tickerInput"
