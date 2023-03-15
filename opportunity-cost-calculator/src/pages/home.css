@@ -162,6 +162,7 @@ input[type="number"]::-webkit-inner-spin-button {
     overflow: scroll;
     overflow-x: hidden;
     border-radius: 8px;
+    position: absolute;
 }
 
 .dropdown-result {
