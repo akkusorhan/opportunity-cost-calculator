@@ -61,13 +61,20 @@ function TickerInput({ symbolInput, setSymbolInput, symbolList, setSymbolList, s
         )
     }
 
+    function handleRemove(index) {
+        const newList = [...symbolList]; // create a copy of the array
+        newList.splice(index, 1); // remove the item at the specified index
+        setSymbolList(newList); // update the state with the new array
+
+    }
+
     function SelectedStock() {
         return (
             <div key={Math.random()} className="selected-stocks-container">
-                    {symbolList.map(item => {
+                    {symbolList.map((item, index) => {
                         return (
                             <div key={item.ticker} className="selected-stocks-item">
-                                <p key={Math.random() * 100} className="selected-stocks-item-close-btn" onClick={null}>x</p>
+                                <p key={Math.random() * 100} className="selected-stocks-item-close-btn" onClick={() => handleRemove(index)}>x</p>
                                 <img key={Math.random() * 100} src={`${item.logo}`} />
                                 <p key={Math.random() * 100}>${item.ticker}</p>
                             </div>
