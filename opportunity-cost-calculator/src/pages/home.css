@@ -28,10 +28,116 @@ html {
 }
 
 body {
-    background-image: url("../assets/black-gradient-background-blurred.png");
-    background-size: cover;
-    background-repeat: no-repeat;
     font-family: "Poppins", sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: black;
+}
+
+/*  -----------------------------------*/
+/* home page styling -----------------------------------*/
+
+.home-page {
+    height: 100vh;
+    position: relative;
+}
+
+.hero-content {
+    z-index: 100;
+}
+
+.home-page-bg-vid {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    z-index: -1;
+    position: absolute;
+    filter:blur(30px);
+}
+
+.hero-content-components-main-text h1 {
+    color: white;
+    font-size: 3.875rem;
+    font-weight: 300;
+    margin: 0;
+}
+
+.hero-content-components-main-text h2 {
+    color: white;
+    font-size: 1.125rem;
+    font-weight: 200;
+    margin: 1rem 0rem;
+}
+
+.hero-content-components-main-text hr {
+    width: 21.82rem;
+    margin-left: 0;
+    opacity: 10%;
+}
+
+.hero-content-components-data-input {
+    width: fit-content;
+}
+
+.hero-content-components-data-input h4 {
+    color: white;
+    font-size: 1.3125rem;
+    font-weight: 300;
+    margin: 1rem;
+}
+
+.hero-content-components-data-input hr {
+    width: 21.82rem;
+    margin-left: 0;
+    opacity: 10%;
+}
+
+.hero-content-components-data-input-text {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    
+}
+
+.hero-content-search h4 {
+    color: white;
+    font-size: 1.125rem;
+    font-weight: 200;
+    margin: 1rem 0rem;
+}
+
+/*  -----------------------------------*/
+/* navbar styling styling -----------------------------------*/
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 4.125rem;
+    width: 100vw;
+    margin: 0rem;
+    padding: 0rem 2rem;
+    color: white;
+
+
+    box-sizing: border-box;
+    background: linear-gradient(90.12deg, rgba(240, 240, 240, 0.18) 1.14%, rgba(233, 233, 233, 0.03) 100%);
+    border: 1px solid rgba(226, 226, 226, 0.06);
+}
+
+.navbar h1 {
+    font-weight: 300;
+    font-size: 1.25rem;
+}
+
+.navbar ul {
+    display: flex;
+}
+
+.navbar ul li {
+    list-style: none;
+    margin: 0rem 1rem;
+    font-weight: 300;
 }
 
 /* amountSaved input styling -----------------------------------*/
@@ -48,6 +154,7 @@ body {
     align-items: center;
     font-size: 1.32rem;
     padding: 0.75rem;
+    margin: 0rem 0.875rem;
 
     color: white;
 }
@@ -106,6 +213,7 @@ input[type="number"]::-webkit-inner-spin-button {
     align-items: center;
     font-size: 1.32rem;
     padding: 0.75rem;
+    margin: 0rem 0.875rem;
     color: white;
     outline: none;
 
@@ -163,7 +271,17 @@ input[type="number"]::-webkit-inner-spin-button {
 
 .tickerInput-container input:focus {
     outline: none;
-}
+} 
+
+@media (max-width: 450px) {
+    .tickerInput-container {
+        height: 2.875rem;
+        width: 22.75rem;
+    }
+  }
+
+/*  -----------------------------------*/
+/* TickerInput dropdown styling -----------------------------------*/
 
 .dropdown {
     background-color: white;
@@ -210,6 +328,9 @@ input[type="number"]::-webkit-inner-spin-button {
     aspect-ratio: retain;
 }
 
+/*  -----------------------------------*/
+/* selected stocks list styling -----------------------------------*/
+
 .selected-stocks-container {
     max-width: 22.75rem;
     min-height: 5.94rem;
@@ -255,3 +376,6 @@ input[type="number"]::-webkit-inner-spin-button {
     font-size: 0.75rem;
     margin: 0rem;
 }
+
+/*  -----------------------------------*/
+/* home page remainder styling (have to move down to override) -----------------------------------*/

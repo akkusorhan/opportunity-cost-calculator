@@ -1,7 +1,7 @@
 import React from "react";
 import { FaSearch } from 'react-icons/fa';
 
-function TickerInput({ symbolInput, setSymbolInput, symbolList, setSymbolList, searchData, setSearchData, companyLogo, setCompanyLogo }) {
+function TickerInput({ symbolInput, setSymbolInput, symbolList, setSymbolList, searchData, setSearchData}) {
 
     async function handleChange(e) {
         e.preventDefault();
