@@ -1,21 +1,19 @@
 import React from "react";
 import './home.css'
 
-import video from "../assets/color-gradient-video.mp4"
-import dollarSignImage from "../assets/dollar-sign-vector.png"
+import video from "../assets/black-gradient-video.mp4"
 
 import AmountSaved from "../components/AmountSaved";
 import DateInput from "../components/DateInput"
 import TickerInput from "../components/TickerInput";
 import Submit from "../components/Submit"
 
-function Home() {
+function Home({ symbolList, setSymbolList }) {
     //Setting state variables for Home Page
     const [amountSaved, setAmountSaved] = React.useState("");
     const [timeHorizon, setTimeHorizon] = React.useState("");
 
     const [symbolInput, setSymbolInput] = React.useState("")
-    const [symbolList, setSymbolList] = React.useState([])
 
     const [searchData, setSearchData] = React.useState([])
 
@@ -48,7 +46,17 @@ function Home() {
                             setSearchData={setSearchData}
                         />
                     </div>
-                    <Submit />
+                    <Submit 
+                        //_____________
+                        symbolInput={symbolInput}
+                        setSymbolInput={setSymbolInput}
+                        symbolList={symbolList}
+                        setSymbolList={setSymbolList}
+                        timeHorizon={timeHorizon}
+                        setTimeHorizon={setTimeHorizon}
+                        amountSaved={amountSaved}
+                        setAmountSaved={setAmountSaved}
+                    />
                 </div>
 
             </div>
