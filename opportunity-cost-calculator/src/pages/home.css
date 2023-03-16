@@ -44,31 +44,18 @@ body {
     border: 1px solid rgb(190, 190, 190);
     border-radius: 8px;
 
-    display: flex;
-    align-items: center;
-
     font-size: 1.32rem;
     padding: 0.75rem;
-    margin: 0rem 0.875rem;
+    margin: 0.25rem;
 
     color: white;
 }
 
-.amountSaved-container input {
-    width: 100%;
-    height: 100%;
-    font-size: 1.32rem;
-    background: none;
-    border: none;
-    color: white;
-
-}
-
-.amountSaved-container input:focus {
+.amountSaved-container:focus {
     outline: none;
 }
 
-.amountSaved-container input::placeholder {
+.amountSaved-container::placeholder {
     color: rgb(180, 180, 180);
     font-family: "Poppins";
 }
@@ -108,7 +95,7 @@ input[type="number"]::-webkit-inner-spin-button {
 
     font-size: 1.32rem;
     padding: 0.75rem;
-    margin: 0rem 0.875rem;
+    margin: 0.25rem;
     color: white;
     outline: none;
 
@@ -143,11 +130,14 @@ input[type="number"]::-webkit-inner-spin-button {
 
     display: flex;
     align-items: center;
+
     font-size: 1.32rem;
     padding: 0.75rem;
 
     color: white;
     margin-bottom: 0px;
+
+    transition: all 200ms ease-in-out;
 }
 
 .tickerInput-container input {
@@ -157,6 +147,25 @@ input[type="number"]::-webkit-inner-spin-button {
     background: none;
     border: none;
     color: white;
+
+    transition: all 200ms ease-in-out;
+}
+
+.search-icon {
+    height: 1rem;
+    width: 1rem;
+    padding-right: 0.5rem;
+}
+
+.search-bar-x-btn {
+    height: 1rem;
+    width: 1rem;
+    transition: all 200ms ease-in-out;
+
+}
+
+.search-bar-x-btn:hover {
+    cursor: pointer;
 }
 
 .tickerInput-container input::placeholder {
@@ -169,12 +178,35 @@ input[type="number"]::-webkit-inner-spin-button {
     outline: none;
 } 
 
-@media (max-width: 450px) {
+@media (max-width: 400px) {
     .tickerInput-container {
         height: 2.875rem;
-        width: 22.75rem;
+        width: 21.5rem;
+    }
+
+    .tickerInput-container input {
+        font-size: 1rem;
+    }
+
+    .tickerInput-container input::placeholder {
+        font-size: 1rem;
     }
   }
+
+  @media (max-width: 350px) {
+    .tickerInput-container {
+        width: fit-content;
+        font-size: 1rem;
+    }
+
+    .tickerInput-container input {
+        font-size: 1rem;
+    }
+
+    .tickerInput-container input::placeholder {
+        font-size: 1rem;
+    }
+}
 
 /*  -----------------------------------*/
 /* TickerInput dropdown styling -----------------------------------*/
@@ -224,6 +256,13 @@ input[type="number"]::-webkit-inner-spin-button {
     aspect-ratio: retain;
 }
 
+@media (max-width: 350px) {
+    .dropdown {
+        width: fit-content;
+        font-size: 1rem;
+    }
+}
+
 /*  -----------------------------------*/
 /* selected stocks list styling -----------------------------------*/
 
@@ -236,9 +275,18 @@ input[type="number"]::-webkit-inner-spin-button {
     
 }
 
+.selected-stocks-container-empty {
+    max-width: 22.75rem;
+    min-height: 5.94rem;
+    margin: 1rem 0rem;
+    display: flex;
+    overflow-x: scroll;
+    justify-content: flex-start;
+}
+
 .selected-stocks-item {
     min-height: 5.94rem;
-    min-width: 4.93rem;
+    min-width: 4.84rem;
     margin-top: 0rem;
     margin-right: 1rem;
     display: flex;
@@ -250,12 +298,35 @@ input[type="number"]::-webkit-inner-spin-button {
 
     color: black;
     background-color: white;
+    border: 1px solid white;
+    transition: all 200ms ease-in-out;
 
+}
+
+.selected-stocks-item-empty {
+    min-height: 5.94rem;
+    min-width: 4.93rem;
+    margin-top: 0rem;
+    margin-right: 0rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 8px;
+
+    color: black;
+    background: linear-gradient(145.38deg, rgba(234, 234, 234, 0.6) 0%, rgba(240, 240, 240, 0.35) 100.07%);
+    border: 1px solid white;
+}
+
+.plus-btn {
+    color: white;
 }
 
 .selected-stocks-item-close-btn {
     align-self: flex-end;
-    padding-right: 0.75rem;
+    padding-right: 0.35rem;
 }
 
 .selected-stocks-item-close-btn:hover {
@@ -319,7 +390,7 @@ input[type="number"]::-webkit-inner-spin-button {
 }
 
 .hero-content-components-data-input {
-    border: 1px solid white;
+    max-width: 43rem;
 }
 
 .hero-content-components-data-input hr {
@@ -369,7 +440,11 @@ input[type="number"]::-webkit-inner-spin-button {
     cursor: pointer;
 }
 
-@media (max-width: 450px) {
+@media (max-width: 650px) {
+    .hero-content {
+        margin-top: 4.25rem;
+    }
+
     .hero-content-components-main-text h1 {
         font-size: 1.70rem;
     }
@@ -381,6 +456,24 @@ input[type="number"]::-webkit-inner-spin-button {
         margin-right: 0rem;
         font-size: 1.0625rem;
         width: fit-content;
+    }
+
+    .hero-content-search h4 {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 400px) {
+    .submit-button {
+        width: 21.5rem;
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 350px) {
+    .submit-button {
+        width: fit-content;
+        font-size: 1rem;
     }
 }
 
@@ -395,7 +488,7 @@ input[type="number"]::-webkit-inner-spin-button {
     height: 4.125rem;
     width: 100vw;
     margin: 0rem;
-    padding: 0rem 2rem;
+    padding: 0rem 5%;
     color: white;
 
 
@@ -409,12 +502,9 @@ input[type="number"]::-webkit-inner-spin-button {
     font-size: 1.25rem;
 }
 
-.navbar ul {
-    display: flex;
-}
-
-.navbar ul li {
-    list-style: none;
-    margin: 0rem 1rem;
-    font-weight: 300;
+@media (max-width: 650px) {
+    .navbar {
+        align-items: center;
+        justify-content: center;
+    }
 }

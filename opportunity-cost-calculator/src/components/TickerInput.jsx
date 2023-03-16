@@ -1,5 +1,7 @@
 import React from "react";
-import { FaSearch } from 'react-icons/fa';
+import { FaSearch, FaPlus, FaTimes } from 'react-icons/fa';
+
+import { SyncLoader } from "react-spinners"
 
 function TickerInput({ symbolInput, setSymbolInput, symbolList, setSymbolList, searchData, setSearchData}) {
 
@@ -33,6 +35,7 @@ function TickerInput({ symbolInput, setSymbolInput, symbolList, setSymbolList, s
 
         return (
             <div className="dropdown">
+                {searchData.length === 0 && symbolInput != "" ? <SyncLoader /> : null}
                 {searchData.map((item) => {
                     function addToListClick() {
                         const list = {
@@ -74,7 +77,7 @@ function TickerInput({ symbolInput, setSymbolInput, symbolList, setSymbolList, s
                     {symbolList.map((item, index) => {
                         return (
                             <div key={item.ticker} className="selected-stocks-item">
-                                <p key={Math.random() * 100} className="selected-stocks-item-close-btn" onClick={() => handleRemove(index)}>x</p>
+                                <p key={Math.random() * 100} className="selected-stocks-item-close-btn" onClick={() => handleRemove(index)}><FaTimes /></p>
                                 <img key={Math.random() * 100} src={`${item.logo}`} />
                                 <p key={Math.random() * 100}>${item.ticker}</p>
                             </div>
@@ -90,6 +93,7 @@ function TickerInput({ symbolInput, setSymbolInput, symbolList, setSymbolList, s
     return (
         <>
             <div className="tickerInput-container">
+                <FaSearch className="search-icon"/>
                 <input 
                     type="text"
                     placeholder="Search For Your Favorite Stocks"
@@ -97,10 +101,16 @@ function TickerInput({ symbolInput, setSymbolInput, symbolList, setSymbolList, s
                     onChange={handleChange}
                     className="tickerInput"
                 />
-                <FaSearch />
+                {symbolInput != "" ? <FaTimes className="search-bar-x-btn" onClick={() => setSymbolInput("")}/> : null}
             </div>
-            {symbolInput != "" && searchData.length != 0 ? <SearchDropdown/> : null}
-            {symbolList.length > 0 ? <SelectedStock /> : null}
+            {symbolInput != "" ? <SearchDropdown/> : null}
+            {symbolList.length > 0 ? <SelectedStock /> : 
+            <div className="selected-stocks-container-empty">
+                <div className="selected-stocks-item-empty">
+                    <FaPlus className="plus-btn" />
+                </div>
+            </div>
+            }
         </>
     )
 

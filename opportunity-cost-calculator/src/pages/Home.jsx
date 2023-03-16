@@ -1,7 +1,7 @@
 import React from "react";
 import './home.css'
 
-import video from "../assets/black-gradient-video.mp4"
+import video from "../assets/color-gradient-video.mp4"
 import dollarSignImage from "../assets/dollar-sign-vector.png"
 
 import AmountSaved from "../components/AmountSaved";
@@ -33,7 +33,7 @@ function Home() {
                         <hr />
                     </div>
                     <div className="hero-content-components-data-input">
-                        <h4 className="hero-content-components-data-input-text">Over the last <DateInput timeHorizon={timeHorizon} setTimeHorizon={setTimeHorizon}/>, I've spent <AmountSaved amountSaved={amountSaved} setAmountSaved={setAmountSaved}/> in my personal checking account.</h4>
+                        <h4 className="hero-content-components-data-input-text">Over the last <DateInput timeHorizon={timeHorizon} setTimeHorizon={setTimeHorizon}/>, I've spent $<AmountSaved amountSaved={amountSaved} setAmountSaved={setAmountSaved}/> in my personal checking account.</h4>
                             <hr/>
 
                     </div>
