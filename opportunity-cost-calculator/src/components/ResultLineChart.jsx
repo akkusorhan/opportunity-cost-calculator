@@ -281,7 +281,7 @@ function ResultLineChart() {
     return(
         <ResponsiveLine
           data={data}
-          margin={{ top: 50, right: 50, bottom: 50, left: 50 }}
+          margin={{ top: 50, right: 50, bottom: 50, left: 70 }}
           xScale={{ type: 'point' }}
           yScale={{
               type: 'linear',

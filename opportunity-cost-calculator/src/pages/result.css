@@ -16,16 +16,81 @@
     width: 80%;
     height: 100%;
 
-    border: 1px solid white;
 }
 
-.result-main-text {
+.result-main-text-container {
     width: 20%;
-    border: 1px solid white;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
-.result-main-text h4 {
+.result-main-text-container h4 {
     font-size: 1.40625rem;
     font-weight: 300;
+    margin: 0rem;
 
+}
+
+.result-amount-text {
+    font-size: 1.9375rem;
+    margin: 0rem;
+}
+
+.result-pl {
+    font-size: 0.890625rem;
+    margin-top: 0.25rem;
+}
+
+.result-selected-stocks-text {
+    font-size: 1rem;
+    margin-bottom: 0rem;
+}
+
+
+
+
+.result-selected-stocks-container {
+    max-width: 16.45rem;
+    min-height: 5.94rem;
+    margin: 1rem 0rem;
+    display: flex;
+    overflow-x: scroll;
+    
+}
+
+
+
+.result-selected-stocks-item {
+    max-width: 3.2625rem;
+    max-height: 3.9375rem;
+    margin-top: 0rem;
+    margin-right: 0.65rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    padding: 0.5rem;
+
+    border-radius: 8px;
+
+    color: black;
+    background-color: white;
+    border: 1px solid white;
+    transition: all 200ms ease-in-out;
+
+}
+
+.result-selected-stocks-item img {
+    height: 2.5rem;
+    width: 2.5rem;
+    object-fit: contain;
+}
+
+.result-selected-stocks-item p {
+    font-size: 0.6rem;
+    margin: 0rem;
+    margin-top: 0.25rem;
 }

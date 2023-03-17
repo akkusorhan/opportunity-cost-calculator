@@ -5,12 +5,12 @@ import ResultLineChart from "../components/ResultLineChart";
 
 function Result({ symbolList, setSymbolList }) {
 
-    function SelectedStock() {
+    function ResultSelectedStock() {
         return (
-            <div key={Math.random()} className="selected-stocks-container">
+            <div key={Math.random()} className="result-selected-stocks-container">
                     {symbolList.map((item, index) => {
                         return (
-                            <div key={item.ticker} className="selected-stocks-item">
+                            <div key={item.ticker} className="result-selected-stocks-item">
                                 <img key={Math.random() * 100} src={`${item.logo}`} />
                                 <p key={Math.random() * 100}>${item.ticker}</p>
                             </div>
@@ -34,9 +34,12 @@ function Result({ symbolList, setSymbolList }) {
                     <ResultLineChart />
                 </div>
                 
-                <div className="result-main-text">
+                <div className="result-main-text-container">
                     <h4>Your spending is worth</h4>
-
+                    <p className="result-amount-text">$3,465.81</p>
+                    <p className="result-pl">Total Return: +$703.92</p>
+                    <p className="result-selected-stocks-text">$2,761.89 Invested Over 18 Months In The Following Stocks: </p>
+                    <ResultSelectedStock />
                 </div>
             </div>
         </div>
