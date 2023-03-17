@@ -13,10 +13,19 @@
 }
 
 .primary-result-line-chart {
-    width: 100%;
+    width: 80%;
     height: 100%;
+
+    border: 1px solid white;
+}
+
+.result-main-text {
+    width: 20%;
+    border: 1px solid white;
 }
 
 .result-main-text h4 {
     font-size: 1.40625rem;
+    font-weight: 300;
+
 }
