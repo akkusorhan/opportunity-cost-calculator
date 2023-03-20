@@ -31,8 +31,16 @@ function Home({ symbolList, setSymbolList }) {
                         <hr />
                     </div>
                     <div className="hero-content-components-data-input">
-                        <h4 className="hero-content-components-data-input-text">Over the last <DateInput timeHorizon={timeHorizon} setTimeHorizon={setTimeHorizon}/>, I've spent $<AmountSaved amountSaved={amountSaved} setAmountSaved={setAmountSaved}/> in my personal checking account.</h4>
-                            <hr/>
+                        <h4 className="hero-content-components-data-input-text">Over the last 
+                            <DateInput 
+                                timeHorizon={timeHorizon} 
+                                setTimeHorizon={setTimeHorizon}
+                            />, I've spent $
+                            <AmountSaved 
+                                amountSaved={amountSaved} 
+                                setAmountSaved={setAmountSaved}
+                            /> in my personal checking account.</h4>
+                        <hr/>
 
                     </div>
                     <div className="hero-content-search">

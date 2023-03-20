@@ -39,7 +39,10 @@ function Result({ symbolList, setSymbolList }) {
                     <p className="result-amount-text">$3,465.81</p>
                     <p className="result-pl">Total Return: +$703.92</p>
                     <p className="result-selected-stocks-text">$2,761.89 Invested Over 18 Months In The Following Stocks: </p>
-                    <ResultSelectedStock />
+                    <ResultSelectedStock 
+                        symbolList={symbolList}
+                        setSymbolList={setSymbolList}
+                    />
                 </div>
             </div>
         </div>

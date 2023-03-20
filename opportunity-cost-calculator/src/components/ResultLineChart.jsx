@@ -2,7 +2,7 @@ import React from "react";
 
 import { ResponsiveLine } from '@nivo/line'
 
-function ResultLineChart() {
+function ResultLineChart({ symbolList, setSymbolList }) {
 
     const data = [
         {
@@ -279,7 +279,7 @@ function ResultLineChart() {
 
 
     return(
-        <ResponsiveLine
+      <ResponsiveLine
           data={data}
           margin={{ top: 50, right: 50, bottom: 50, left: 70 }}
           xScale={{ type: 'point' }}
