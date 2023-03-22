@@ -3,7 +3,7 @@ import './result.css'
 
 import ResultLineChart from "../components/ResultLineChart";
 
-function Result({ symbolList, setSymbolList }) {
+function Result({ symbolList, setSymbolList, amountSaved, setAmountSaved, timeHorizon, setTimeHorizon }) {
 
     function ResultSelectedStock() {
         return (
@@ -40,6 +40,10 @@ function Result({ symbolList, setSymbolList }) {
                     <p className="result-pl">Total Return: +$703.92</p>
                     <p className="result-selected-stocks-text">$2,761.89 Invested Over 18 Months In The Following Stocks: </p>
                     <ResultSelectedStock 
+                        amountSaved={amountSaved}
+                        setAmountSaved={setAmountSaved}
+                        timeHorizon={timeHorizon}
+                        setTimeHorizon={setTimeHorizon}
                         symbolList={symbolList}
                         setSymbolList={setSymbolList}
                     />

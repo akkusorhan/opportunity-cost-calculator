@@ -2,6 +2,9 @@
     margin: 0 5%;
 }
 
+/*  -----------------------------------*/
+/* Main result container styling, line chart included with the result text*/
+
 .primary-result-container {
     background-color: #171717;
     width: 100%;
@@ -60,8 +63,6 @@
     
 }
 
-
-
 .result-selected-stocks-item {
     max-width: 3.2625rem;
     max-height: 3.9375rem;
@@ -93,4 +94,37 @@
     font-size: 0.6rem;
     margin: 0rem;
     margin-top: 0.25rem;
+}
+
+@media (max-width: 1050px) {
+    .primary-result-container {
+        flex-direction: column-reverse;
+
+        width: 100%;
+        height: 50%;
+    }
+
+    .result-main-text-container {
+        width: 90%;
+        padding: 1rem;
+    
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .primary-result-line-chart {
+        width: 100%;
+        height: 250px;
+    
+    }
+
+    .result-selected-stocks-container {
+        max-width: 24rem;
+    }
+
+    .result-main-text-container h4 {
+        font-size: 1.0625rem;
+        font-weight: 200;
+    }
 }

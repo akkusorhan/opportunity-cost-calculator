@@ -11,8 +11,9 @@ function Submit({
     setTimeHorizon, 
     amountSaved, 
     setAmountSaved
-}) {
-    return(
+}){
+
+    return (
 
         <Link to="/result"><button className="submit-button" type="button">Calculate My Opportunity Cost</button></Link>
         

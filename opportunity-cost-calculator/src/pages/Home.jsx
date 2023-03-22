@@ -8,10 +8,8 @@ import DateInput from "../components/DateInput"
 import TickerInput from "../components/TickerInput";
 import Submit from "../components/Submit"
 
-function Home({ symbolList, setSymbolList }) {
+function Home({ symbolList, setSymbolList, amountSaved, setAmountSaved, timeHorizon, setTimeHorizon }) {
     //Setting state variables for Home Page
-    const [amountSaved, setAmountSaved] = React.useState("");
-    const [timeHorizon, setTimeHorizon] = React.useState("");
 
     const [symbolInput, setSymbolInput] = React.useState("")
 

@@ -2,7 +2,7 @@ import React from "react";
 
 import { ResponsiveLine } from '@nivo/line'
 
-function ResultLineChart({ symbolList, setSymbolList }) {
+function ResultLineChart({ symbolList, setSymbolList, amountSaved, setAmountSaved, timeHorizon, setTimeHorizon }) {
 
     const data = [
         {
@@ -309,12 +309,11 @@ function ResultLineChart({ symbolList, setSymbolList }) {
           enableGridX={false}
           enableGridY={false}
           colors={{ scheme: 'nivo', }}
-          lineWidth={2}
-          pointSize={5}
+          lineWidth={1}
+          pointSize={3}
           pointColor={{ from: 'color', modifiers: [] }}
           pointBorderColor={{ from: 'color', modifiers: [] }}
           pointLabelYOffset={-12}
-          enableSlices="x"
           enableCrosshair={false}
           useMesh={true}
           legends={[]}
