@@ -3,7 +3,7 @@ import './result.css'
 
 import ResultLineChart from "../components/ResultLineChart";
 
-function Result({ symbolList, setSymbolList, amountSaved, setAmountSaved, timeHorizon, setTimeHorizon }) {
+function Result({ symbolList, setSymbolList, amountSaved, setAmountSaved, timeHorizon, setTimeHorizon, submissionData, setSubmissionData }) {
 
     function ResultSelectedStock() {
         return (
@@ -31,7 +31,17 @@ function Result({ symbolList, setSymbolList, amountSaved, setAmountSaved, timeHo
         <div className="result-page">
             <div className="primary-result-container">
                 <div className="primary-result-line-chart">
-                    <ResultLineChart />
+                    <ResultLineChart 
+                        amountSaved={amountSaved}
+                        setAmountSaved={setAmountSaved}
+                        timeHorizon={timeHorizon}
+                        setTimeHorizon={setTimeHorizon}
+                        symbolList={symbolList}
+                        setSymbolList={setSymbolList}
+
+                        submissionData={submissionData}
+                        setSubmissionData={setSubmissionData}
+                    />
                 </div>
                 
                 <div className="result-main-text-container">
@@ -39,14 +49,7 @@ function Result({ symbolList, setSymbolList, amountSaved, setAmountSaved, timeHo
                     <p className="result-amount-text">$3,465.81</p>
                     <p className="result-pl">Total Return: +$703.92</p>
                     <p className="result-selected-stocks-text">$2,761.89 Invested Over 18 Months In The Following Stocks: </p>
-                    <ResultSelectedStock 
-                        amountSaved={amountSaved}
-                        setAmountSaved={setAmountSaved}
-                        timeHorizon={timeHorizon}
-                        setTimeHorizon={setTimeHorizon}
-                        symbolList={symbolList}
-                        setSymbolList={setSymbolList}
-                    />
+                    <ResultSelectedStock />
                 </div>
             </div>
         </div>

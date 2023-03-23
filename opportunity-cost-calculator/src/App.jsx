@@ -10,13 +10,7 @@ function App() {
 
   const [symbolList, setSymbolList] = React.useState([])
 
-  const [submissionData, setSubmissionData] = React.useState({
-    amountSaved: amountSaved, 
-    timeHorizon: timeHorizon,
-    symbolList: symbolList, 
-    amountInvested: amountSaved / symbolList.length,
-    
-  })
+  const [submissionData, setSubmissionData] = React.useState([])
 
   return (
     <Routes>
@@ -28,6 +22,9 @@ function App() {
           setTimeHorizon={setTimeHorizon}
           symbolList={symbolList}
           setSymbolList={setSymbolList}
+
+          submissionData={submissionData}
+          setSubmissionData={setSubmissionData}
         />
       }/>
         <Route path="/result" element={
@@ -38,6 +35,9 @@ function App() {
           setTimeHorizon={setTimeHorizon}
           symbolList={symbolList}
           setSymbolList={setSymbolList}
+
+          submissionData={submissionData}
+          setSubmissionData={setSubmissionData}
         />
       } />
     </Routes>

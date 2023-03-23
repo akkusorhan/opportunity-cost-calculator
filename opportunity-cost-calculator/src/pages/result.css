@@ -127,4 +127,19 @@
         font-size: 1.0625rem;
         font-weight: 200;
     }
+
+    .result-amount-text {
+        font-size: 1.6875rem;
+        font-weight: 300;
+    }
+
+    .result-pl {
+        font-size: 0.75rem;
+        font-weight: 200;
+    }
+
+    .result-selected-stocks-text {
+        font-size: 0.875rem;
+        font-weight: 200;
+    }
 }
