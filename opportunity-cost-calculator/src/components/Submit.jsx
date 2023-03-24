@@ -44,7 +44,7 @@ function Submit({
             timeLengthDate.getUTCDay() == 6 || timeLengthDate.getUTCDay() == 0 ? timeLengthDate.setUTCDate(timeLengthDate.getUTCDate() - 2) : null;
 
             let iDate = new Date(timeLengthDate.getFullYear(), timeLengthDate.getMonth() + i, timeLengthDate.getDate()); 
-            iDate.getUTCDay() == 6 || iDate.getUTCDay() == 0 ? iDate.setUTCDate(iDate.getUTCDate() - 3) : null;
+            iDate.getUTCDay() == 6 || iDate.getUTCDay() == 0 ? iDate.setUTCDate(iDate.getUTCDate() - 2) : null;
 
             let iDateString = iDate.toISOString().substring(0, 10); //returns YYYY-MM-DD
 
@@ -52,12 +52,15 @@ function Submit({
             let request = await fetch(`https://api.polygon.io/v1/open-close/${ticker}/${iDateString}?adjusted=true&apiKey=MXrXoKsreyzlXOqFZZlKE3yGdbTlsieL`);
             let response = await request.json();
 
+            let chartDateStringYear = iDate.toISOString().slice(2, 4); // returns YY
+            let chartDateStringMonth = iDate.toISOString().slice(5, 7); // returns MM
 
-            let chartDateString = iDate.toISOString().slice(2, 7); // returns YY-MM
+
+            let chartDateString = `${chartDateStringMonth}/${chartDateStringYear}`
 
 
 
-            if (i == 0) {
+            if (i == 0 && typeof response.close === "number") {
                 //typeof amountOfShares === "number" ? amountOfShares = investedAmount / response.close : amountOfShares = 0;
                 amountOfShares = investedAmount / response.close
                 let dataPointData = {
@@ -65,7 +68,7 @@ function Submit({
                     "y": `${response.close * amountOfShares}`
                 }
                 dataPoints.push(dataPointData);
-            } else if (i == timelength - 1) {
+            } else if (i == timelength - 1 && typeof response.close === "number") {
                 let dataPointData = {
                     "x": `${chartDateString}`,
                     "y": `${response.close * amountOfShares}`
@@ -74,6 +77,27 @@ function Submit({
 
                 plSoFar = response.close * amountOfShares;
 
+            } else if (typeof response.close != "number") {
+                let modifiedDate = new Date(timeLengthDate.getFullYear(), timeLengthDate.getMonth() + i, timeLengthDate.getDate()); 
+                modifiedDate.setUTCDate(modifiedDate.getUTCDate() - 1);
+
+                let modifiedDateString = modifiedDate.toISOString().substring(0, 10); //returns YYYY-MM-DD
+
+                let modifiedRequest = await fetch(`https://api.polygon.io/v1/open-close/${ticker}/${modifiedDateString}?adjusted=true&apiKey=MXrXoKsreyzlXOqFZZlKE3yGdbTlsieL`);
+                let modifiedResponse = await modifiedRequest.json();
+
+                let modifiedChartDateStringYear = iDate.toISOString().slice(2, 4); // returns YY
+                let modifiedChartDateStringMonth = iDate.toISOString().slice(5, 7); // returns MM
+
+                let modifiedChartDateString = `${modifiedChartDateStringMonth}/${modifiedChartDateStringYear}`;
+
+
+
+                let dataPointData = {
+                    "x": `${modifiedChartDateString}`,
+                    "y": `${modifiedResponse.close * amountOfShares}`
+                }
+                dataPoints.push(dataPointData);
             } else {
                 let dataPointData = {
                     "x": `${chartDateString}`,

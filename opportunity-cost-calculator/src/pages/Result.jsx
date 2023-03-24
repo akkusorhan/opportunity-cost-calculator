@@ -2,6 +2,7 @@ import React from "react";
 import './result.css'
 
 import ResultLineChart from "../components/ResultLineChart";
+import InvestmentPerformance from "../components/InvestmentPerformance";
 
 function Result({ symbolList, setSymbolList, amountSaved, setAmountSaved, timeHorizon, setTimeHorizon, primaryLineChartDataPoints, setPrimaryLineChartDataPoints, 
     plResult, 
@@ -9,6 +10,8 @@ function Result({ symbolList, setSymbolList, amountSaved, setAmountSaved, timeHo
 
     plAmount, 
     setPlAmount }) {
+
+    console.log(symbolList)
 
     let plAmountt = plResult - amountSaved;
     let plColor;
@@ -64,6 +67,16 @@ function Result({ symbolList, setSymbolList, amountSaved, setAmountSaved, timeHo
                     <p className="result-selected-stocks-text">${amountSaved} Invested Over {timeHorizon} Months In The Following Stocks: </p>
                     <ResultSelectedStock />
                 </div>
+            </div>
+            <div className="result-secondary-container">
+                <div className="result-investment-performance-container">
+                    <InvestmentPerformance symbolList={symbolList} timeHorizon={timeHorizon} amountSaved={amountSaved} />
+
+                </div>
+                <div className="result-pie-chart-container">
+
+                </div>
+
             </div>
         </div>
         </>
