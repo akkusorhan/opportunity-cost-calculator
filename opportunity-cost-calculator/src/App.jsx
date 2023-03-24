@@ -7,10 +7,12 @@ import Result from './pages/Result'
 function App() {
   const [amountSaved, setAmountSaved] = React.useState("");
   const [timeHorizon, setTimeHorizon] = React.useState("");
+  const [symbolList, setSymbolList] = React.useState([]);
 
-  const [symbolList, setSymbolList] = React.useState([])
+  const [plResult, setPlResult] = React.useState(0)
+  const [plAmount, setPlAmount] = React.useState(plResult - amountSaved)
 
-  const [submissionData, setSubmissionData] = React.useState([])
+  const [primaryLineChartDataPoints, setPrimaryLineChartDataPoints] = React.useState([]) //line chart data for result page
 
   return (
     <Routes>
@@ -23,8 +25,14 @@ function App() {
           symbolList={symbolList}
           setSymbolList={setSymbolList}
 
-          submissionData={submissionData}
-          setSubmissionData={setSubmissionData}
+          primaryLineChartDataPoints={primaryLineChartDataPoints}
+          setPrimaryLineChartDataPoints={setPrimaryLineChartDataPoints}
+
+          plResult={plResult}
+          setPlResult={setPlResult}
+
+          plAmount={plAmount}
+          setPlAmount={setPlAmount}
         />
       }/>
         <Route path="/result" element={
@@ -36,8 +44,14 @@ function App() {
           symbolList={symbolList}
           setSymbolList={setSymbolList}
 
-          submissionData={submissionData}
-          setSubmissionData={setSubmissionData}
+          primaryLineChartDataPoints={primaryLineChartDataPoints}
+          setPrimaryLineChartDataPoints={setPrimaryLineChartDataPoints}
+
+          plResult={plResult}
+          setPlResult={setPlResult}
+
+          plAmount={plAmount}
+          setPlAmount={setPlAmount}
         />
       } />
     </Routes>

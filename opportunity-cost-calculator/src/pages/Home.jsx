@@ -8,7 +8,12 @@ import DateInput from "../components/DateInput"
 import TickerInput from "../components/TickerInput";
 import Submit from "../components/Submit"
 
-function Home({ symbolList, setSymbolList, amountSaved, setAmountSaved, timeHorizon, setTimeHorizon, submissionData, setSubmissionData }) {
+function Home({ symbolList, setSymbolList, amountSaved, setAmountSaved, timeHorizon, setTimeHorizon, primaryLineChartDataPoints, setPrimaryLineChartDataPoints, 
+    plResult, 
+    setPlResult, 
+
+    plAmount, 
+    setPlAmount }) {
     //Setting state variables for Home Page
 
     const [symbolInput, setSymbolInput] = React.useState("")
@@ -63,8 +68,14 @@ function Home({ symbolList, setSymbolList, amountSaved, setAmountSaved, timeHori
                         amountSaved={amountSaved}
                         setAmountSaved={setAmountSaved}
 
-                        submissionData={submissionData}
-                        setSubmissionData={setSubmissionData}
+                        primaryLineChartDataPoints={primaryLineChartDataPoints}
+                        setPrimaryLineChartDataPoints={setPrimaryLineChartDataPoints}
+
+                        plResult={plResult}
+                        setPlResult={setPlResult}
+              
+                        plAmount={plAmount}
+                        setPlAmount={setPlAmount}
                     />
                 </div>
 

@@ -3,7 +3,14 @@ import './result.css'
 
 import ResultLineChart from "../components/ResultLineChart";
 
-function Result({ symbolList, setSymbolList, amountSaved, setAmountSaved, timeHorizon, setTimeHorizon, submissionData, setSubmissionData }) {
+function Result({ symbolList, setSymbolList, amountSaved, setAmountSaved, timeHorizon, setTimeHorizon, primaryLineChartDataPoints, setPrimaryLineChartDataPoints, 
+    plResult, 
+    setPlResult, 
+
+    plAmount, 
+    setPlAmount }) {
+
+    let plAmountt = plResult - amountSaved;
 
     function ResultSelectedStock() {
         return (
@@ -39,16 +46,16 @@ function Result({ symbolList, setSymbolList, amountSaved, setAmountSaved, timeHo
                         symbolList={symbolList}
                         setSymbolList={setSymbolList}
 
-                        submissionData={submissionData}
-                        setSubmissionData={setSubmissionData}
+                        primaryLineChartDataPoints={primaryLineChartDataPoints}
+                        setPrimaryLineChartDataPoints={setPrimaryLineChartDataPoints}
                     />
                 </div>
                 
                 <div className="result-main-text-container">
                     <h4>Your spending is worth</h4>
-                    <p className="result-amount-text">$3,465.81</p>
-                    <p className="result-pl">Total Return: +$703.92</p>
-                    <p className="result-selected-stocks-text">$2,761.89 Invested Over 18 Months In The Following Stocks: </p>
+                    <p className="result-amount-text">${`${Math.floor(plResult.toFixed(2) * 100) / 100}`}</p>
+                    <p className="result-pl">Total Return: +${`${Math.floor(plAmountt.toFixed(2) * 100) / 100}`}</p>
+                    <p className="result-selected-stocks-text">${amountSaved} Invested Over {timeHorizon} Months In The Following Stocks: </p>
                     <ResultSelectedStock />
                 </div>
             </div>

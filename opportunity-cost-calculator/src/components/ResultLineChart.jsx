@@ -2,11 +2,10 @@ import React from "react";
 
 import { ResponsiveLine } from '@nivo/line'
 
-function ResultLineChart({ symbolList, setSymbolList, amountSaved, setAmountSaved, timeHorizon, setTimeHorizon, submissionData, setSubmissionData }) {
-  console.log(submissionData)
+function ResultLineChart({ symbolList, setSymbolList, amountSaved, setAmountSaved, timeHorizon, setTimeHorizon, primaryLineChartDataPoints, setPrimaryLineChartDataPoints }) {
     return(
       <ResponsiveLine
-          data={submissionData}
+          data={primaryLineChartDataPoints}
           margin={{ top: 50, right: 50, bottom: 50, left: 70 }}
           xScale={{ type: 'point' }}
           yScale={{
@@ -48,6 +47,7 @@ function ResultLineChart({ symbolList, setSymbolList, amountSaved, setAmountSave
           theme={{
               "textColor": "#FFFFFF", 
               "fontFamily": "poppins",
+              "fontSize": "10px",
               
               "tooltip": {
                   "container": {

@@ -12,8 +12,14 @@ function Submit({
     amountSaved, 
     setAmountSaved, 
     
-    submissionData, 
-    setSubmissionData
+    primaryLineChartDataPoints, 
+    setPrimaryLineChartDataPoints,
+
+    plResult, 
+    setPlResult, 
+
+    plAmount, 
+    setPlAmount
 }){
 
     function getRandomColor() {
@@ -28,6 +34,8 @@ function Submit({
         let amountOfShares;
         let investedAmount = savedAmount / (symbolList.length)
 
+        let plSoFar;
+
         for (let i = 0; i < timelength; i++) {
             let today = new Date();// create a new date object for today's date
             today.getUTCDay() == 6 || today.getUTCDay() == 0 ? today.setUTCDate(today.getUTCDate() - 2) : null;
@@ -40,20 +48,34 @@ function Submit({
 
             let iDateString = iDate.toISOString().substring(0, 10); //returns YYYY-MM-DD
 
+
             let request = await fetch(`https://api.polygon.io/v1/open-close/${ticker}/${iDateString}?adjusted=true&apiKey=MXrXoKsreyzlXOqFZZlKE3yGdbTlsieL`);
             let response = await request.json();
+
+
+            let chartDateString = iDate.toISOString().slice(2, 7); // returns YY-MM
+
 
 
             if (i == 0) {
                 amountOfShares = investedAmount / response.close;
                 let dataPointData = {
-                    "x": `${iDateString}`,
+                    "x": `${chartDateString}`,
                     "y": `${response.close * amountOfShares}`
                 }
                 dataPoints.push(dataPointData);
+            } else if (i == timelength - 1) {
+                let dataPointData = {
+                    "x": `${chartDateString}`,
+                    "y": `${response.close * amountOfShares}`
+                }
+                dataPoints.push(dataPointData);
+
+                plSoFar = response.close * amountOfShares;
+
             } else {
                 let dataPointData = {
-                    "x": `${iDateString}`,
+                    "x": `${chartDateString}`,
                     "y": `${response.close * amountOfShares}`
                 }
                 dataPoints.push(dataPointData);
@@ -61,7 +83,9 @@ function Submit({
 
         }
 
-        await setSubmissionData(prev => [...prev, {
+        await setPlResult(prev => prev + plSoFar)
+
+        await setPrimaryLineChartDataPoints(prev => [...prev, {
             "id": ticker,
             "color": getRandomColor(),
             "data": dataPoints
