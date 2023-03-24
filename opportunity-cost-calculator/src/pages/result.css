@@ -3,6 +3,21 @@
 }
 
 /*  -----------------------------------*/
+/* Result page header text styling*/
+
+
+.result-text h1 {
+    font-size: 2rem;
+    font-weight: 300;
+    color: white;
+}
+
+@media (max-width: 1050px) {
+    .result-text h1 {
+        font-size: 1.3125rem;
+    }
+}
+/*  -----------------------------------*/
 /* Main result container styling, line chart included with the result text*/
 
 .primary-result-container {
@@ -39,16 +54,19 @@
 .result-amount-text {
     font-size: 1.9375rem;
     margin: 0rem;
+    font-weight: 300;
 }
 
 .result-pl {
     font-size: 0.890625rem;
     margin-top: 0.25rem;
+    font-weight: 300;
 }
 
 .result-selected-stocks-text {
     font-size: 1rem;
     margin-bottom: 0rem;
+    font-weight: 300;
 }
 
 
@@ -143,3 +161,5 @@
         font-weight: 200;
     }
 }
+
+/*  -----------------------------------*/

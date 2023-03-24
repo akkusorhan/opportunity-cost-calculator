@@ -44,7 +44,7 @@ function Submit({
             timeLengthDate.getUTCDay() == 6 || timeLengthDate.getUTCDay() == 0 ? timeLengthDate.setUTCDate(timeLengthDate.getUTCDate() - 2) : null;
 
             let iDate = new Date(timeLengthDate.getFullYear(), timeLengthDate.getMonth() + i, timeLengthDate.getDate()); 
-            iDate.getUTCDay() == 6 || iDate.getUTCDay() == 0 ? iDate.setUTCDate(iDate.getUTCDate() - 2) : null;
+            iDate.getUTCDay() == 6 || iDate.getUTCDay() == 0 ? iDate.setUTCDate(iDate.getUTCDate() - 3) : null;
 
             let iDateString = iDate.toISOString().substring(0, 10); //returns YYYY-MM-DD
 
@@ -58,7 +58,8 @@ function Submit({
 
 
             if (i == 0) {
-                amountOfShares = investedAmount / response.close;
+                //typeof amountOfShares === "number" ? amountOfShares = investedAmount / response.close : amountOfShares = 0;
+                amountOfShares = investedAmount / response.close
                 let dataPointData = {
                     "x": `${chartDateString}`,
                     "y": `${response.close * amountOfShares}`
