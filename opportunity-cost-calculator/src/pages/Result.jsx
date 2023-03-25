@@ -70,6 +70,7 @@ function Result({ symbolList, setSymbolList, amountSaved, setAmountSaved, timeHo
             </div>
             <div className="result-secondary-container">
                 <div className="result-investment-performance-container">
+                    <h4>Investment Performance</h4>
 
                     <SingleStockPerformance symbolList={symbolList} primaryLineChartDataPoints={primaryLineChartDataPoints} amountSaved={amountSaved} />
 

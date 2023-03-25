@@ -66,7 +66,7 @@ function SingleStockPerformance({symbolList, primaryLineChartDataPoints, amountS
       return (
         <ResponsiveLine
         data={data.data}
-        margin={{ top: 10, right: 10, bottom: 10, left: 10 }}
+        margin={{ top: 0, right: 0, bottom: 0, left: 0 }}
         xScale={{ type: 'point' }}
         yScale={{
             type: 'linear',
@@ -76,23 +76,32 @@ function SingleStockPerformance({symbolList, primaryLineChartDataPoints, amountS
             reverse: false
         }}
         yFormat=" >-.2f"
-        curve="natural"
         axisTop={null}
         axisRight={null}
-        axisBottom={null}
-        axisLeft={null}
+        axisBottom={{
+            orient: 'bottom',
+            tickSize: 0,
+            tickPadding: 5,
+            tickRotation: 0,
+        }}
+        axisLeft={{
+            orient: 'left',
+            tickSize: 0,
+            tickPadding: 5,
+            tickRotation: 0,
+        }}
         enableGridX={false}
         enableGridY={false}
-        colors={{ scheme: 'set1' }}
+        colors={{ scheme: 'category10' }}
+        lineWidth={1}
         enablePoints={false}
-        pointSize={10}
+        pointSize={5}
         pointColor={{ theme: 'background' }}
         pointBorderWidth={2}
         pointBorderColor={{ from: 'serieColor' }}
         pointLabelYOffset={-12}
-        areaOpacity={0.15}
+        areaOpacity={0}
         enableCrosshair={false}
-        crosshairType="cross"
         useMesh={true}
         legends={[]}
     />
@@ -127,10 +136,10 @@ function SingleStockPerformance({symbolList, primaryLineChartDataPoints, amountS
     
                 return (
                     <span className="individual-stock-result">
-                        <div key={item.ticker} className="result-single-stock-item">
-                            <img src={item.logo} />
-                            <p>${item.ticker}</p>
-                        </div>
+                            <div key={item.ticker} className="result-single-stocks-item">
+                                <img key={Math.random() * 100} src={`${item.logo}`} />
+                                <p key={Math.random() * 100}>${item.ticker}</p>
+                            </div>
                         
                         <span className="line-chart"><LineChart className="test" data={lineChartDataPoints}/></span>
                         <div className="result-single-stock-details">
