@@ -21,7 +21,7 @@ function TickerInput({ symbolInput, setSymbolInput, symbolList, setSymbolList, s
     
                 let companyLogoUrl;
     
-                retrieveLogoResponse.results.branding ? companyLogoUrl = `${retrieveLogoResponse.results.branding.logo_url}?apiKey=MXrXoKsreyzlXOqFZZlKE3yGdbTlsieL` : null;
+                retrieveLogoResponse.results.branding ? companyLogoUrl = `${retrieveLogoResponse.results.branding.icon_url}?apiKey=MXrXoKsreyzlXOqFZZlKE3yGdbTlsieL` : null;
                 searchResults[i].logo = companyLogoUrl
             }
     

@@ -1,7 +1,9 @@
 import React from "react";
 import { ResponsiveLine } from '@nivo/line'
 
-function SingleStockLineChart() {
+
+function SingleStockPerformance({symbolList, primaryLineChartDataPoints}) {
+
 
     const dummyData = [
         {
@@ -59,9 +61,12 @@ function SingleStockLineChart() {
           ]
         }]
 
-    return (
+    const [test, setTest] = React.useState(dummyData)
+
+    function LineChart(data) {
+      return (
         <ResponsiveLine
-        data={dummyData}
+        data={data.data}
         margin={{ top: 50, right: 110, bottom: 50, left: 60 }}
         xScale={{ type: 'point' }}
         yScale={{
@@ -92,8 +97,31 @@ function SingleStockLineChart() {
         useMesh={true}
         legends={[]}
     />
-    )
+      )
+    }
 
+    return (
+        <>
+        {symbolList.map((item) => {
+            const symbolListTicker = item.ticker;
+            const getlineChartDataPoints = primaryLineChartDataPoints.find(obj => obj.id === symbolListTicker) 
+            const lineChartDataPoints = [getlineChartDataPoints]
+
+
+            return (
+                <LineChart data={test}/>
+            )
+        })}
+      </>
+        
+    )
 }
 
-export default SingleStockLineChart;
+export default SingleStockPerformance
+
+
+/* 
+            const symbolListTicker = item.ticker;
+            const getlineChartDataPoints = primaryLineChartDataPoints.find(obj => obj.id === symbolListTicker) 
+            lineChartDataPoints = [getlineChartDataPoints]
+*/

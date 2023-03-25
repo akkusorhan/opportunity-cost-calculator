@@ -79,7 +79,7 @@ function Submit({
 
             } else if (typeof response.close != "number") {
                 let modifiedDate = new Date(timeLengthDate.getFullYear(), timeLengthDate.getMonth() + i, timeLengthDate.getDate()); 
-                modifiedDate.setUTCDate(modifiedDate.getUTCDate() - 1);
+                modifiedDate.setUTCDate(modifiedDate.getUTCDate() - 2);
 
                 let modifiedDateString = modifiedDate.toISOString().substring(0, 10); //returns YYYY-MM-DD
 
