@@ -2,7 +2,8 @@ import React from "react";
 import './result.css'
 
 import ResultLineChart from "../components/ResultLineChart";
-import InvestmentPerformance from "../components/InvestmentPerformance";
+
+import SingleStockLineChart from "../components/SingleStockLineChart";
 
 function Result({ symbolList, setSymbolList, amountSaved, setAmountSaved, timeHorizon, setTimeHorizon, primaryLineChartDataPoints, setPrimaryLineChartDataPoints, 
     plResult, 
@@ -12,6 +13,7 @@ function Result({ symbolList, setSymbolList, amountSaved, setAmountSaved, timeHo
     setPlAmount }) {
 
     console.log(symbolList)
+    console.log(primaryLineChartDataPoints)
 
     let plAmountt = plResult - amountSaved;
     let plColor;
@@ -34,6 +36,22 @@ function Result({ symbolList, setSymbolList, amountSaved, setAmountSaved, timeHo
             </div>
         )
 
+    }
+
+    function SingleStockPerformance() {
+        return (
+            <div>
+                {symbolList.map((item) => {
+                    return (
+                        <div>
+                            <img src={`${item.logo}`} />
+                            <SingleStockLineChart />
+
+                        </div>
+                    )
+                })}
+            </div>
+        )
     }
 
     return (
@@ -70,7 +88,7 @@ function Result({ symbolList, setSymbolList, amountSaved, setAmountSaved, timeHo
             </div>
             <div className="result-secondary-container">
                 <div className="result-investment-performance-container">
-                    <InvestmentPerformance symbolList={symbolList} timeHorizon={timeHorizon} amountSaved={amountSaved} />
+                    <SingleStockPerformance />
 
                 </div>
                 <div className="result-pie-chart-container">

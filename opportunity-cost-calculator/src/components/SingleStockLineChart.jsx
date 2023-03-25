@@ -1,9 +1,9 @@
 import React from "react";
 import { ResponsiveLine } from '@nivo/line'
 
-function SingleStockLineChart({symbolList, timeHorizon, amountSaved}) {
+function SingleStockLineChart() {
 
-    const data = [
+    const dummyData = [
         {
           "id": "japan",
           "color": "hsl(93, 70%, 50%)",
@@ -61,7 +61,7 @@ function SingleStockLineChart({symbolList, timeHorizon, amountSaved}) {
 
     return (
         <ResponsiveLine
-        data={data}
+        data={dummyData}
         margin={{ top: 50, right: 110, bottom: 50, left: 60 }}
         xScale={{ type: 'point' }}
         yScale={{
