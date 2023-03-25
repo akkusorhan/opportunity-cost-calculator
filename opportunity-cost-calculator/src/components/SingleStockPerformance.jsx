@@ -66,7 +66,7 @@ function SingleStockPerformance({symbolList, primaryLineChartDataPoints, amountS
       return (
         <ResponsiveLine
         data={data.data}
-        margin={{ top: 50, right: 110, bottom: 50, left: 60 }}
+        margin={{ top: 10, right: 10, bottom: 10, left: 10 }}
         xScale={{ type: 'point' }}
         yScale={{
             type: 'linear',
@@ -105,32 +105,39 @@ function SingleStockPerformance({symbolList, primaryLineChartDataPoints, amountS
             primaryLineChartDataPoints.length === symbolList.length ? symbolList.map((item, index) => {
 
 
-                const symbolListTicker = item.ticker;
-                const getLineChartDataPoints = primaryLineChartDataPoints.find(obj => obj.id === symbolListTicker) 
-                const lineChartDataPoints = [getLineChartDataPoints]
+                let symbolListTicker = item.ticker;
+                let getLineChartDataPoints = primaryLineChartDataPoints.find(obj => obj.id === symbolListTicker) 
+                let lineChartDataPoints = [getLineChartDataPoints]
 
-                const finalPointArray = lineChartDataPoints[0].data
-                const finalPoint = finalPointArray[finalPointArray.length - 1].y
+                let finalPointArray = lineChartDataPoints[0].data
+                let finalPoint = finalPointArray[finalPointArray.length - 1].y
 
                 
                 
-                const investedAmount = amountSaved / symbolList.length
-                const totalReturnAmount = 0;
+                let investedAmount = amountSaved / symbolList.length
+                let totalReturnAmount = finalPoint
+                let totalGainAmount = 0;
+                let gainOrLoss = "";
 
+
+                investedAmount >= totalReturnAmount ? totalGainAmount = investedAmount - totalReturnAmount : totalGainAmount = totalReturnAmount - investedAmount;
+                finalPoint <= investedAmount ? gainOrLoss = "Loss: -$" : gainOrLoss = "Gain: +$"
                 
 
     
                 return (
-                    <>
-                        <img src={item.logo} />
-                        <LineChart data={lineChartDataPoints}/>
+                    <span className="individual-stock-result">
+                        <div key={item.ticker} className="result-single-stock-item">
+                            <img src={item.logo} />
+                            <p>${item.ticker}</p>
+                        </div>
+                        
+                        <span className="line-chart"><LineChart className="test" data={lineChartDataPoints}/></span>
                         <div className="result-single-stock-details">
                             <p>Invested: ${investedAmount.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})}</p>
-                            <p>Total Return: </p>
-                            <p>Gain: </p>
-
+                            <p>{gainOrLoss}{totalGainAmount.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})}</p>
                         </div>
-                    </>
+                    </span>
                     
                 )
             }) : null

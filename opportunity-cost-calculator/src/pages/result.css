@@ -1,3 +1,4 @@
+
 .result-page {
     margin: 0 5%;
 
@@ -181,17 +182,79 @@
 /* investment performance container styling*/
 
 .result-investment-performance-container {
+
     background-color: #171717;
     border-radius: 10px;
     height: 55vh;
     width: 75%;
+    overflow: scroll;
+    overflow-x: hidden;
 
     margin-right: 1rem;
 }
 
-.result-investment-performance-container img {
-    border-radius: 10px;
+.line-chart {
+    width: 80%;
+    border: 1px solid green;
 }
+
+.individual-stock-result {
+    border: 1px solid white;
+    display: flex;
+    height: 4.5rem;
+    padding: 1rem;
+    width: 90%;
+
+    justify-content: flex-start;
+
+    margin: 1.5rem;
+}
+
+.result-single-stock-item {
+
+    max-width: 3.2625rem;
+    max-height: 3.9375rem;
+
+    background-color: white;
+    padding: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    border-radius: 10px;
+
+}
+
+.result-single-stock-item img {
+    border-radius: 10px;
+    width: 50%;
+    object-fit: contain;
+    margin: 0;
+}
+
+.result-single-stock-item p {
+    margin: 0;
+    font-size: 0.75rem;
+}
+
+.result-single-stock-details {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.result-single-stock-details p {
+    margin: 0;
+    margin-left: 1rem;
+    font-size: 1rem;
+    font-weight: 200;
+
+    color: white;
+    border: 1px solid pink;
+}
+
+
 /*  -----------------------------------*/
 /* pie chart container styling*/
 
@@ -199,7 +262,7 @@
     background-color: #171717;
     border-radius: 10px;
     height: 55vh;
-    width: 25%;
+    width: 40%;
 
     margin-left: 1rem;
 }
