@@ -189,6 +189,9 @@
     margin-right: 1rem;
 }
 
+.result-investment-performance-container img {
+    border-radius: 10px;
+}
 /*  -----------------------------------*/
 /* pie chart container styling*/
 

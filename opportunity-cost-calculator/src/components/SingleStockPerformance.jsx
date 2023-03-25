@@ -2,8 +2,7 @@ import React from "react";
 import { ResponsiveLine } from '@nivo/line'
 
 
-function SingleStockPerformance({symbolList, primaryLineChartDataPoints}) {
-
+function SingleStockPerformance({symbolList, primaryLineChartDataPoints, amountSaved}) {
 
     const dummyData = [
         {
@@ -102,16 +101,42 @@ function SingleStockPerformance({symbolList, primaryLineChartDataPoints}) {
 
     return (
         <>
-        {symbolList.map((item) => {
-            const symbolListTicker = item.ticker;
-            const getlineChartDataPoints = primaryLineChartDataPoints.find(obj => obj.id === symbolListTicker) 
-            const lineChartDataPoints = [getlineChartDataPoints]
+        {
+            primaryLineChartDataPoints.length === symbolList.length ? symbolList.map((item, index) => {
 
 
-            return (
-                <LineChart data={test}/>
-            )
-        })}
+                const symbolListTicker = item.ticker;
+                const getLineChartDataPoints = primaryLineChartDataPoints.find(obj => obj.id === symbolListTicker) 
+                const lineChartDataPoints = [getLineChartDataPoints]
+
+                const finalPointArray = lineChartDataPoints[0].data
+                const finalPoint = finalPointArray[finalPointArray.length - 1].y
+
+                
+                
+                const investedAmount = amountSaved / symbolList.length
+                const totalReturnAmount = 0;
+
+                
+
+    
+                return (
+                    <>
+                        <img src={item.logo} />
+                        <LineChart data={lineChartDataPoints}/>
+                        <div className="result-single-stock-details">
+                            <p>Invested: ${investedAmount.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})}</p>
+                            <p>Total Return: </p>
+                            <p>Gain: </p>
+
+                        </div>
+                    </>
+                    
+                )
+            }) : null
+                
+
+        }
       </>
         
     )
