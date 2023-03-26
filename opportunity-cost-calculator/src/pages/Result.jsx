@@ -14,6 +14,7 @@ function Result({ symbolList, setSymbolList, amountSaved, setAmountSaved, timeHo
 
 
     let plAmountt = plResult - amountSaved;
+
     let plColor;
     plAmountt > amountSaved ? plColor = "#00ff00" : plColor = "#ff0000"
 
@@ -63,7 +64,7 @@ function Result({ symbolList, setSymbolList, amountSaved, setAmountSaved, timeHo
                 <div className="result-main-text-container">
                     <h4>Your spending is worth</h4>
                     <p className="result-amount-text">${plResult.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})}</p>
-                    <p className="result-pl" style={{color: plColor}} >Total Return: ${plAmountt.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})}</p>
+                    <p className="result-pl" style={{color: plColor}}>Total Return: ${plAmountt.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})}</p>
                     <p className="result-selected-stocks-text">${amountSaved} Invested Over {timeHorizon} Months In The Following Stocks: </p>
                     <ResultSelectedStock />
                 </div>

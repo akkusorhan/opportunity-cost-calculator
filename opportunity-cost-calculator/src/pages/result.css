@@ -248,8 +248,8 @@
 }
 
 .result-single-stocks-item img {
-    height: 2.5rem;
-    width: 2.5rem;
+    height: 4rem;
+    width: 4rem;
     object-fit: contain;
 
     border-radius: 10px;
@@ -283,12 +283,15 @@
     }
 
     .individual-stock-result {
-        margin: 0;
+        margin: 1rem;
+        justify-content: flex-start;
+        
     }
 
     .line-chart {
-        width: 35%;
+        width: 55%;
         max-height: 3rem;
+        margin: 0rem 0.5rem;
     }
 
     .result-single-stocks-item {
@@ -296,8 +299,12 @@
         max-height: 3rem;
     }
 
+    .result-single-stock-details {
+        margin-top: -1rem;
+    }
+
     .result-single-stock-details p {
-        font-size: 0.8rem;
+        font-size: 0.7rem;
     }
 }
 

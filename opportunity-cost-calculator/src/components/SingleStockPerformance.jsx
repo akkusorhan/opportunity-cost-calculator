@@ -66,7 +66,7 @@ function SingleStockPerformance({symbolList, primaryLineChartDataPoints, amountS
       return (
         <ResponsiveLine
         data={data.data}
-        margin={{ top: 0, right: 0, bottom: 0, left: 0 }}
+        margin={{ top: 5, right: 0, bottom: 5, left: 0 }}
         xScale={{ type: 'point' }}
         yScale={{
             type: 'linear',
@@ -75,6 +75,7 @@ function SingleStockPerformance({symbolList, primaryLineChartDataPoints, amountS
             stacked: true,
             reverse: false
         }}
+        curve="natural"
         yFormat=" >-.2f"
         axisTop={null}
         axisRight={null}
@@ -104,6 +105,18 @@ function SingleStockPerformance({symbolList, primaryLineChartDataPoints, amountS
         enableCrosshair={false}
         useMesh={true}
         legends={[]}
+        theme={{
+          "textColor": "#FFFFFF", 
+          "fontFamily": "poppins",
+          "fontSize": "10px",
+          
+          "tooltip": {
+              "container": {
+                  "background": "#212121",
+                  "color": "#ffffff", 
+                  "fontSize": "10px"
+
+              }}}}
     />
       )
     }
