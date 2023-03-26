@@ -49,10 +49,6 @@ function PieChart({symbolList, primaryLineChartDataPoints}) {
                 let pieChartEndValue = getPieChartDataPoints.data[getPieChartDataPoints.data.length - 1].y
                 let modifiedPieChartEndValue = Math.round(pieChartEndValue * 100) / 100;
 
-
-
-                console.log(pieChartEndValue.toLocaleString())
-
                 let pieChartDataObject = {
                     "id": `${symbolListId}`, 
                     "label": `${symbolListId}`, 
