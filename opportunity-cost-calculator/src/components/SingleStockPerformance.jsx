@@ -140,10 +140,14 @@ function SingleStockPerformance({symbolList, primaryLineChartDataPoints, amountS
                 let totalReturnAmount = finalPoint
                 let totalGainAmount = 0;
                 let gainOrLoss = "";
+                let gainOrLossColor;
+
+
 
 
                 investedAmount >= totalReturnAmount ? totalGainAmount = investedAmount - totalReturnAmount : totalGainAmount = totalReturnAmount - investedAmount;
                 finalPoint <= investedAmount ? gainOrLoss = "Loss: -$" : gainOrLoss = "Gain: +$"
+                finalPoint <= investedAmount ? gainOrLossColor = "#ff0000" : gainOrLossColor = "#00ff00"
                 
 
     
@@ -157,7 +161,7 @@ function SingleStockPerformance({symbolList, primaryLineChartDataPoints, amountS
                         <span className="line-chart"><LineChart className="test" data={lineChartDataPoints}/></span>
                         <div className="result-single-stock-details">
                             <p>Invested: ${investedAmount.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})}</p>
-                            <p>{gainOrLoss}{totalGainAmount.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})}</p>
+                            <p style={{color: `${gainOrLossColor}`}}>{gainOrLoss}{totalGainAmount.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})}</p>
                         </div>
                     </span>
                     

@@ -16,7 +16,7 @@ function Result({ symbolList, setSymbolList, amountSaved, setAmountSaved, timeHo
     let plAmountt = plResult - amountSaved;
 
     let plColor;
-    plAmountt > amountSaved ? plColor = "#00ff00" : plColor = "#ff0000"
+    plResult - amountSaved > amountSaved - plResult ? plColor = "#00ff00" : plColor = "#ff0000"
 
 
     function ResultSelectedStock() {
