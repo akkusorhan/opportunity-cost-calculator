@@ -5,6 +5,8 @@ import ResultLineChart from "../components/ResultLineChart";
 
 import SingleStockPerformance from "../components/SingleStockPerformance";
 
+import PieChart from "../components/PieChart";
+
 function Result({ symbolList, setSymbolList, amountSaved, setAmountSaved, timeHorizon, setTimeHorizon, primaryLineChartDataPoints, setPrimaryLineChartDataPoints, 
     plResult, 
     setPlResult, 
@@ -65,7 +67,7 @@ function Result({ symbolList, setSymbolList, amountSaved, setAmountSaved, timeHo
                     <h4>Your spending is worth</h4>
                     <p className="result-amount-text">${plResult.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})}</p>
                     <p className="result-pl" style={{color: plColor}}>Total Return: ${plAmountt.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})}</p>
-                    <p className="result-selected-stocks-text">${amountSaved} Invested Over {timeHorizon} Months In The Following Stocks: </p>
+                    <p className="result-selected-stocks-text">${amountSaved} Invested Over {timeHorizon} Months In The Following {symbolList.length} Stocks: </p>
                     <ResultSelectedStock />
                 </div>
             </div>
@@ -79,6 +81,8 @@ function Result({ symbolList, setSymbolList, amountSaved, setAmountSaved, timeHo
 
                 </div>
                 <div className="result-pie-chart-container">
+                    <h4>Investment Breakdown</h4>
+                    <PieChart symbolList={symbolList} primaryLineChartDataPoints={primaryLineChartDataPoints} />
 
                 </div>
 

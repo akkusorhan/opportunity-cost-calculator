@@ -4,64 +4,6 @@ import { ResponsiveLine } from '@nivo/line'
 
 function SingleStockPerformance({symbolList, primaryLineChartDataPoints, amountSaved}) {
 
-    const dummyData = [
-        {
-          "id": "japan",
-          "color": "hsl(93, 70%, 50%)",
-          "data": [
-            {
-              "x": "plane",
-              "y": 185
-            },
-            {
-              "x": "helicopter",
-              "y": 234
-            },
-            {
-              "x": "boat",
-              "y": 187
-            },
-            {
-              "x": "train",
-              "y": 20
-            },
-            {
-              "x": "subway",
-              "y": 92
-            },
-            {
-              "x": "bus",
-              "y": 96
-            },
-            {
-              "x": "car",
-              "y": 144
-            },
-            {
-              "x": "moto",
-              "y": 31
-            },
-            {
-              "x": "bicycle",
-              "y": 175
-            },
-            {
-              "x": "horse",
-              "y": 108
-            },
-            {
-              "x": "skateboard",
-              "y": 152
-            },
-            {
-              "x": "others",
-              "y": 135
-            }
-          ]
-        }]
-
-    const [test, setTest] = React.useState(dummyData)
-
     function LineChart(data) {
       return (
         <ResponsiveLine
