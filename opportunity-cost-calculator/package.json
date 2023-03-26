@@ -7,7 +7,7 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "start": "npm run build"
+    "start": "npm run dev"
   },
   "dependencies": {
     "@nivo/core": "^0.80.0",
