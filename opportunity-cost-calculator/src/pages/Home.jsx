@@ -55,6 +55,7 @@ function Home({ symbolList, setSymbolList, amountSaved, setAmountSaved, timeHori
                             setSymbolList={setSymbolList}
                             searchData={searchData}
                             setSearchData={setSearchData}
+                            timeHorizon={timeHorizon}
                         />
                     </div>
                     <Submit 

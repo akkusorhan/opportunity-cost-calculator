@@ -18,6 +18,7 @@ function DateInput({timeHorizon, setTimeHorizon}) {
                         <option value="24">24 months</option>
                         <option value="36">36 months</option>
                         <option value="48">48 months</option>
+                        <option value="59">60 months</option>
 
                 </select>
             

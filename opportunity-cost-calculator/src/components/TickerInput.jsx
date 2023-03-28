@@ -3,7 +3,7 @@ import { FaSearch, FaPlus, FaTimes } from 'react-icons/fa';
 
 import { SyncLoader } from "react-spinners"
 
-function TickerInput({ symbolInput, setSymbolInput, symbolList, setSymbolList, searchData, setSearchData}) {
+function TickerInput({ symbolInput, setSymbolInput, symbolList, setSymbolList, searchData, setSearchData, timeHorizon}) {
 
     async function handleChange(e) {
         e.preventDefault();
@@ -37,19 +37,57 @@ function TickerInput({ symbolInput, setSymbolInput, symbolList, setSymbolList, s
             <div className="dropdown">
                 {searchData.length === 0 && symbolInput != "" ? <SyncLoader /> : null}
                 {searchData.map((item) => {
-                    function addToListClick() {
-                        const list = {
-                            id: Math.random() * 31.234, 
-                            ticker: item.ticker, 
-                            name: item.name, 
-                            logo: item.logo
+                    async function addToListClick() {
+                        let today = new Date();
+                        let timeLengthDate = new Date(today.getFullYear(), today.getMonth() - timeHorizon, today.getDate()); // subtract [timeHorizon] months from today's date
+                        timeLengthDate.getUTCDay() == 6 || timeLengthDate.getUTCDay() == 0 ? timeLengthDate.setUTCDate(timeLengthDate.getUTCDate() - 5) : null;
+                        let timeLengthDateString = timeLengthDate.toISOString().substring(0, 10); //returns YYYY-MM-DD
+
+                        let request = await fetch(`https://api.polygon.io/v1/open-close/${item.ticker}/${timeLengthDateString}?adjusted=true&apiKey=MXrXoKsreyzlXOqFZZlKE3yGdbTlsieL`);
+                        let response = await request.json();
+
+                        if (typeof response.close != "number") {
+                            let modifiedDate = new Date(timeLengthDate.getFullYear(), timeLengthDate.getMonth(), timeLengthDate.getDate() + 1); 
+                            modifiedDate.setUTCDate(modifiedDate.getUTCDate());
+            
+                            let modifiedDateString = modifiedDate.toISOString().substring(0, 10); //returns YYYY-MM-DD
+            
+                            let modifiedRequest = await fetch(`https://api.polygon.io/v1/open-close/${item.ticker}/${modifiedDateString}?adjusted=true&apiKey=MXrXoKsreyzlXOqFZZlKE3yGdbTlsieL`);
+                            let modifiedResponse = await modifiedRequest.json();
+
+                            if (typeof modifiedResponse.close != "number") {
+                                alert(`Stock ${item.name} cannot be found for the specified time horizon.`)
+                            } else {
+                                const list = {
+                                    id: Math.random() * 31.234, 
+                                    ticker: item.ticker, 
+                                    name: item.name, 
+                                    logo: item.logo
+                                }
+        
+                                await setSymbolList(prev => [
+                                    ...prev, 
+                                    list
+                                ])
+                                await setSymbolInput("")
+
+                            }
+                        } else {
+                            const list = {
+                                id: Math.random() * 31.234, 
+                                ticker: item.ticker, 
+                                name: item.name, 
+                                logo: item.logo
+                            }
+    
+                            await setSymbolList(prev => [
+                                ...prev, 
+                                list
+                            ])
+                            await setSymbolInput("")
                         }
 
-                        setSymbolList(prev => [
-                            ...prev, 
-                            list
-                        ])
-                        setSymbolInput("")
+
                     }
                     return (
                         <>

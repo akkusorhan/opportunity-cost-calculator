@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 import { Link } from 'react-router-dom'
 
@@ -21,6 +22,7 @@ function Submit({
     plAmount, 
     setPlAmount
 }){
+    const navigate = useNavigate()
 
     function getRandomColor() {
         const hue = Math.floor(Math.random() * 360);
@@ -38,13 +40,13 @@ function Submit({
 
         for (let i = 0; i < timelength; i++) {
             let today = new Date();// create a new date object for today's date
-            today.getUTCDay() == 6 || today.getUTCDay() == 0 ? today.setUTCDate(today.getUTCDate() + 2) : null;
+            //today.getUTCDay() == 6 || today.getUTCDay() == 0 ? today.setUTCDate(today.getUTCDate() + 2) : null;
 
             let timeLengthDate = new Date(today.getFullYear(), today.getMonth() - timelength, today.getDate()); // subtract [timeLength] months from today's date
-            timeLengthDate.getUTCDay() == 6 || timeLengthDate.getUTCDay() == 0 ? timeLengthDate.setUTCDate(timeLengthDate.getUTCDate() + 2) : null;
+            //timeLengthDate.getUTCDay() == 6 || timeLengthDate.getUTCDay() == 0 ? timeLengthDate.setUTCDate(timeLengthDate.getUTCDate() + 2) : null;
 
             let iDate = new Date(timeLengthDate.getFullYear(), timeLengthDate.getMonth() + i, timeLengthDate.getDate()); 
-            iDate.getUTCDay() == 6 || iDate.getUTCDay() == 0 ? iDate.setUTCDate(iDate.getUTCDate() + 2) : null;
+            iDate.getUTCDay() == 6 || iDate.getUTCDay() == 0 ? iDate.setUTCDate(iDate.getUTCDate() - 5) : null;
 
             let iDateString = iDate.toISOString().substring(0, 10); //returns YYYY-MM-DD
 
@@ -78,8 +80,8 @@ function Submit({
                 plSoFar = response.close * amountOfShares;
 
             } else if (typeof response.close != "number") {
-                let modifiedDate = new Date(timeLengthDate.getFullYear(), timeLengthDate.getMonth() + i, timeLengthDate.getDate()); 
-                modifiedDate.setUTCDate(modifiedDate.getUTCDate() - 2);
+                let modifiedDate = new Date(iDate.getFullYear(), iDate.getMonth(), iDate.getDate() + 1); 
+                modifiedDate.setUTCDate(modifiedDate.getUTCDate());
 
                 let modifiedDateString = modifiedDate.toISOString().substring(0, 10); //returns YYYY-MM-DD
 
@@ -95,7 +97,7 @@ function Submit({
 
                 let dataPointData = {
                     "x": `${modifiedChartDateString}`,
-                    "y": `${investedAmount}`,
+                    "y": `${modifiedResponse.close * amountOfShares}`,
                     //"y": `${modifiedResponse.close * amountOfShares}`
                 }
                 dataPoints.push(dataPointData);
@@ -127,12 +129,12 @@ function Submit({
 
     function submitClick() {
         compileResults();
-
+        symbolList.length > 0 && amountSaved > 0 && timeHorizon > 3 ? navigate("/result") : alert("Please complete all fields.");
     }
 
     return (
 
-        <Link to="/result"><button className="submit-button" type="button" onClick={submitClick}>Calculate My Opportunity Cost</button></Link>
+        <button className="submit-button" type="button" onClick={submitClick}>Calculate My Opportunity Cost</button>
         
     )
 }
