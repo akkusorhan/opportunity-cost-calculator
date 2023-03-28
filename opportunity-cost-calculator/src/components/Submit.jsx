@@ -95,7 +95,8 @@ function Submit({
 
                 let dataPointData = {
                     "x": `${modifiedChartDateString}`,
-                    "y": `${modifiedResponse.close * amountOfShares}`
+                    "y": `${investedAmount}`,
+                    //"y": `${modifiedResponse.close * amountOfShares}`
                 }
                 dataPoints.push(dataPointData);
             } else {
