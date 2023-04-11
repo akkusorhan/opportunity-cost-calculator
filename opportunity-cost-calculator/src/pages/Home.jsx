@@ -30,24 +30,25 @@ function Home({ symbolList, setSymbolList, amountSaved, setAmountSaved, timeHori
                 <div className="hero-content-components">
                     <div className="hero-content-components-main-text">
                         <h1>Calculate Your Spending <br/> Opportunity Cost.</h1>
-                        <h2>See your spending dollars invested, over time, in your favorite stocks.</h2>
+                        <h2>See your dollars invested, over time, in your favorite stocks.</h2>
                         <hr />
                     </div>
                     <div className="hero-content-components-data-input">
-                        <h4 className="hero-content-components-data-input-text">Over the last 
-                            <DateInput 
-                                timeHorizon={timeHorizon} 
-                                setTimeHorizon={setTimeHorizon}
-                            />, I've spent $
+                        <h4 className="hero-content-components-data-input-text">If I invested $ 
                             <AmountSaved 
                                 amountSaved={amountSaved} 
                                 setAmountSaved={setAmountSaved}
-                            /> in my personal checking account.</h4>
+                            /> over the last
+                            <DateInput 
+                                timeHorizon={timeHorizon} 
+                                setTimeHorizon={setTimeHorizon}
+                            /> in the following stocks, how much would I have?
+                            </h4>
                         <hr/>
 
                     </div>
                     <div className="hero-content-search">
-                        <h4>Choose the stocks you would like to see your spending dollars invested in.</h4>
+                        <h4>Choose the stocks you would like to see your dollars invested in.</h4>
                         <TickerInput 
                             symbolInput={symbolInput}
                             setSymbolInput={setSymbolInput}
