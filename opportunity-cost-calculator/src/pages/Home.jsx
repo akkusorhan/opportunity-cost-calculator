@@ -1,5 +1,6 @@
 import React from "react";
 import './home.css'
+import { useNavigate } from "react-router-dom";
 
 import video from "../assets/black-gradient-video.mp4"
 
@@ -19,12 +20,14 @@ function Home({ symbolList, setSymbolList, amountSaved, setAmountSaved, timeHori
     const [symbolInput, setSymbolInput] = React.useState("")
 
     const [searchData, setSearchData] = React.useState([])
+    
+    const navigate = useNavigate()
 
     return (
         <div className="home-page">
             <video src={video} autoPlay loop muted className="home-page-bg-vid"></video>
             <div className="navbar">
-                    <h1>OpportunityCost.io</h1>
+                    <h1 onClick={() => navigate("/mockup")}>OpportunityCost.io</h1>
                 </div>
             <div className="hero-content">
                 <div className="hero-content-components">
