@@ -1,8 +1,16 @@
 import React from 'react'
 import { Route, Routes } from 'react-router-dom'
 
+import mockup from "./assets/mockup.png"
+
 import Home from './pages/Home'
 import Result from './pages/Result'
+
+function Mockup() {
+  return (
+    <img src={mockup} />
+  )
+}
 
 function App() {
   const [amountSaved, setAmountSaved] = React.useState("");
@@ -54,6 +62,7 @@ function App() {
           setPlAmount={setPlAmount}
         />
       } />
+      <Route path="/mockup" element={<Mockup />}/>
     </Routes>
   )
 }
