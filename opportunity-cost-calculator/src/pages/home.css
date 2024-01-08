@@ -357,6 +357,11 @@ input[type="number"]::-webkit-inner-spin-button {
 
 .hero-content {
     z-index: 100;
+    /* border: 3px solid blue; */
+    overflow: hidden;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .home-page-bg-vid {
@@ -370,6 +375,21 @@ input[type="number"]::-webkit-inner-spin-button {
 
 .hero-content-components {
     margin: 5%;
+    /* border: 3px solid orange; */
+}
+
+.dollar-sign {
+    /* border: 3px solid purple; */
+    /* display: none; */
+    height: 75vh;
+    width: 20vw;
+    overflow-x: hide;
+    z-index: 15;
+}
+
+.dollar-sign img {
+    height: 100%;
+    transform: translateX(-90px);
 }
 
 .hero-content-components-main-text h1 {
@@ -441,6 +461,12 @@ input[type="number"]::-webkit-inner-spin-button {
     color: black;
     transition: all 150ms ease-in-out;
     cursor: pointer;
+}
+
+@media (max-width: 1150px) {
+    .dollar-sign {
+        display: none;
+    }
 }
 
 @media (max-width: 650px) {

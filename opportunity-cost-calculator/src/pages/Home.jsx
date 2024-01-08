@@ -2,7 +2,7 @@ import React from "react";
 import './home.css'
 import { useNavigate } from "react-router-dom";
 
-import video from "../assets/black-gradient-video.mp4"
+import video from "../assets/color-gradient-video.mp4"
 
 import AmountSaved from "../components/AmountSaved";
 import DateInput from "../components/DateInput"
@@ -84,9 +84,11 @@ function Home({ symbolList, setSymbolList, amountSaved, setAmountSaved, timeHori
                     />
                 </div>
 
+                <div className="dollar-sign">
+                    <img src="../src/assets/dollar-sign-vector.png" alt="" />
+                </div>
+
             </div>
-
-
         </div>
     )
 }
