@@ -1,31 +1,69 @@
-import React from "react";
+// import React from "react";
+import React, { useState, useCallback } from 'react';
 import { FaSearch, FaPlus, FaTimes } from 'react-icons/fa';
 
 import { SyncLoader } from "react-spinners"
 
 function TickerInput({ symbolInput, setSymbolInput, symbolList, setSymbolList, searchData, setSearchData, timeHorizon}) {
 
+    function useDebouncedCallback(callback, delay) {
+        const [timer, setTimer] = useState(null);
+      
+        const debouncedCallback = useCallback((...args) => {
+          if (timer) {
+            clearTimeout(timer);
+          }
+          const newTimer = setTimeout(() => {
+            callback(...args);
+          }, delay);
+          setTimer(newTimer);
+        }, [callback, delay]);
+      
+        return debouncedCallback;
+      }
+
+
+    const fetchData = async (value) => {
+        // console.log(value)
+        let request = await fetch(`https://api.polygon.io/v3/reference/tickers?search=${value}&active=true&apiKey=MXrXoKsreyzlXOqFZZlKE3yGdbTlsieL`);
+        let response = await request.json();
+        // console.log(response)
+    
+        let searchResults = response.results.filter(item => item.market === "stocks" && item.ticker.length <= 4) //.slice(0, 15);
+        // let searchResults = response.results;
+
+        // async function sortResponse(responseData) {
+        //     let result = responseData.results.filter(item => item.market === "us" && item.ticker.length <= 4).slice(0, 15)
+        //     searchResults = result
+        //     console.log("what")
+        // }
+        // sortResponse(response)
+
+        
+    
+        for (let i = 0; i < searchResults.length; i++) {
+          let companyTicker = searchResults[i].ticker;
+          let retrieveLogoRequest = await fetch(`https://api.polygon.io/v3/reference/tickers/${companyTicker}?apiKey=MXrXoKsreyzlXOqFZZlKE3yGdbTlsieL`); 
+          let retrieveLogoResponse = await retrieveLogoRequest.json();
+        //   console.log(retrieveLogoResponse)
+    
+          let companyLogoUrl;
+          retrieveLogoResponse.results.branding ? companyLogoUrl = `${retrieveLogoResponse.results.branding.icon_url}?apiKey=MXrXoKsreyzlXOqFZZlKE3yGdbTlsieL` : null;
+          searchResults[i].logo = companyLogoUrl;
+        }
+    
+        setSearchData(searchResults);
+      }
+
+      const debouncedFetchData = useDebouncedCallback(fetchData, 500);
+
+
     async function handleChange(e) {
         e.preventDefault();
-        setSymbolInput(prev => prev = e.target.value)
+        const currentValue = e.target.value;
+          setSymbolInput(currentValue)
+          debouncedFetchData(currentValue)
 
-            let request = await fetch(`https://api.polygon.io/v3/reference/tickers?search=${symbolInput}&active=true&apiKey=MXrXoKsreyzlXOqFZZlKE3yGdbTlsieL`);
-            let response = await request.json();
-    
-            let searchResults = response.results.filter(item => item.market = "us" && item.ticker.length <= 4).slice(0, 15);
-    
-            for (let i = 0; i < searchResults.length; i++) {
-                let companyTicker = searchResults[i].ticker;
-                let retrieveLogoRequest = await fetch(`https://api.polygon.io/v3/reference/tickers/${companyTicker}?apiKey=MXrXoKsreyzlXOqFZZlKE3yGdbTlsieL`); 
-                let retrieveLogoResponse = await retrieveLogoRequest.json();
-    
-                let companyLogoUrl;
-    
-                retrieveLogoResponse.results.branding ? companyLogoUrl = `${retrieveLogoResponse.results.branding.icon_url}?apiKey=MXrXoKsreyzlXOqFZZlKE3yGdbTlsieL` : null;
-                searchResults[i].logo = companyLogoUrl
-            }
-    
-            setSearchData(searchResults);
         
 
         
